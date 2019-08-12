@@ -6,7 +6,7 @@ from Units.models import Unit
 class Product(models.Model):
     name = models.CharField(max_length=50)
     alternative_name = models.CharField(max_length=50)
-    units_of_measure = models.ManyToManyField(Unit, null=True)
+    units_of_measure = models.ManyToManyField(Unit)
     product_category = models.ForeignKey(Category, null= True, on_delete=models.SET_NULL)
     image = models.ImageField(blank=True, null=True, upload_to="media/")
 

@@ -1,73 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d7eb1dc5-a380-4d49-8baa-14ad947c8c1e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/MKenya.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/R_User_Library.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pipfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pipfile.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Categories/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Categories/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Categories/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Categories/migrations/0001_initial.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Categories/migrations/0002_auto_20190812_2348.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Categories/migrations/0003_auto_20190812_2355.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Categories/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Categories/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Categories/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Categories/views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Country/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Country/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Country/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Country/migrations/0001_initial.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Country/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Country/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Country/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Country/views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/County/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/County/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/County/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/County/migrations/0001_initial.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/County/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/County/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/County/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/County/views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Products/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Products/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Products/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Products/migrations/0001_initial.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Products/migrations/0002_product_image.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Products/migrations/0003_auto_20190812_2355.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Products/migrations/0004_auto_20190813_0021.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Products/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Products/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Products/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Products/views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Screenshot_1565272340.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Units/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Units/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Units/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Units/migrations/0001_initial.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Units/migrations/0002_auto_20190812_2333.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Units/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Units/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Units/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Units/views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/app/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/app/settings.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/app/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/app/wsgi.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/db.sqlite3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/manage.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/media/Category/Screenshot_1565304346.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/media/media/Screenshot_1565304346.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/media/media/organic-corn.jpg" afterDir="false" />
-    </list>
+    <list default="true" id="d7eb1dc5-a380-4d49-8baa-14ad947c8c1e" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +9,17 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Products/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="8" column="50" selection-start-line="8" selection-start-column="50" selection-end-line="8" selection-end-column="50" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -123,6 +67,12 @@
               <item name="MKenya" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="MKenya" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MKenya" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Products" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -157,24 +107,25 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1565636524570</updated>
-      <workItem from="1565636532228" duration="9632000" />
+      <workItem from="1565636532228" duration="9967000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9632000" />
+    <option name="totallyTimeSpent" value="9967000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12153518" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12153518" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" />
       <window_info anchor="bottom" id="Version Control" />
       <window_info anchor="bottom" id="Python Console" />
-      <window_info active="true" anchor="bottom" id="Terminal" visible="true" weight="0.32583067" />
+      <window_info anchor="bottom" id="Terminal" visible="true" weight="0.32583067" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
@@ -300,11 +251,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Products/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="61" selection-start-line="8" selection-start-column="61" selection-end-line="8" selection-end-column="61" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="102">
+          <caret line="8" column="50" selection-start-line="8" selection-start-column="50" selection-end-line="8" selection-end-column="50" />
         </state>
       </provider>
     </entry>
