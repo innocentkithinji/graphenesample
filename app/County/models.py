@@ -4,7 +4,7 @@ from Country.models import Country
 
 class County(models.Model):
     name = models.CharField(max_length=50);
-    country = models.ForeignKey(Country, on_delete=models.CASCADE)
+    country = models.ForeignKey(Country, on_delete=models.CASCADE, related_name="counties")
 
     def __str__(self):
         return self.name

@@ -38,12 +38,23 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'graphene_django',
     'Categories',
     'County',
     'Country',
     'Products',
-    'Units'
+    'Units',
+    'Buyer',
+    'Farm',
+    'Members',
+    'Packages',
+    'Sales',
+    'Tenders',
 ]
+
+GRAPHENE = {
+    'SCHEMA': 'app.schema.schema'
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
