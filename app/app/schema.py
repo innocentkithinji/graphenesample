@@ -10,15 +10,16 @@ from Packages.schema import Query as PackagesQuery
 from Products.schema import Query as ProductsQuery
 from Sales.schema import Query as SalesQuery, Mutation as SaleMutation
 from Units.schema import Query as UnitsQuery
-from Tenders.schema import Query as TenderQuery
+from Tenders.schema import Query as TenderQuery, Mutation as TenderMutation
 
 
-class Query(CountyQuery, CountryQuery, MembersQuery, BuyerQuery, CategoryQuery, TenderQuery, FarmQuery, PackagesQuery, ProductsQuery,
+class Query(CountyQuery, CountryQuery, MembersQuery, BuyerQuery, CategoryQuery, TenderQuery, FarmQuery, PackagesQuery,
+            ProductsQuery,
             SalesQuery, UnitsQuery, graphene.ObjectType):
     pass
 
 
-class Mutation(MemberMutation, FarmMutation, BuyerMutation, SaleMutation, graphene.ObjectType):
+class Mutation(MemberMutation, FarmMutation, TenderMutation, BuyerMutation, SaleMutation, graphene.ObjectType):
     pass
 
 
