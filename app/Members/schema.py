@@ -1,3 +1,5 @@
+from django.db.models import Q
+
 from .models import Member
 import graphene
 from graphene_django import DjangoObjectType
@@ -9,10 +11,18 @@ class MemberType(DjangoObjectType):
 
 
 class Query(graphene.ObjectType):
-    members = graphene.List(MemberType)
+    members = graphene.List(MemberType, uid=graphene.String())
 
-    def resolve_members(self, info):
-        return Member.objects.all()
+    def resolve_members(self, info, uid=None):
+        mbr = Member.objects.all()
+
+        if uid:
+            filters = (
+                Q(uid__icontains=uid)
+            )
+            mbr = mbr.filter(filters)
+
+        return mbr
 
 
 class createUser(graphene.Mutation):
