@@ -12,6 +12,9 @@ graphene-django = "*"
 django-graphql-jwt = "*"
 django-cors-headers = "*"
 pillow = "*"
+pipfile = "*"
+mysqlclient = "*"
+gunicorn = "*"
 
 [requires]
 python_version = "3.7"

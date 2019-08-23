@@ -35,3 +35,4 @@ class Query(graphene.ObjectType):
             rs = rs[:first]
 
         return rs
+

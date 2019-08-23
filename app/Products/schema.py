@@ -18,7 +18,7 @@ class Query(graphene.ObjectType):
         skip=graphene.Int()
     )
 
-    def resolve_products(self, info, search=None,first=None, skip=None, **kwargs):
+    def resolve_products(self, info, search=None, first=None, skip=None, **kwargs):
         rs = Product.objects.all()
 
         if search:
@@ -33,6 +33,4 @@ class Query(graphene.ObjectType):
             rs = rs[skip:]
         if first:
             rs = rs[:first]
-
-
         return rs
