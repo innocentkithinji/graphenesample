@@ -18,7 +18,7 @@ class Query(graphene.ObjectType):
         skip=graphene.Int()
     )
 
-    def resolve_categories(self, info, search=None, first=None, skip=None, **kwargs):
+    def resolve_categories(self, info, search=None,first=None, skip=None, **kwargs):
         rs = Category.objects.all()
 
         if search:
@@ -35,3 +35,4 @@ class Query(graphene.ObjectType):
             rs = rs[:first]
 
         return rs
+
