@@ -15,7 +15,7 @@ class FarmPackageType(DjangoObjectType):
 class PeriodType(DjangoObjectType):
     class Meta:
         model = Period
-        fields = ['id', 'name', 'numberOfDays']
+        only_fields = ('id', 'name', 'numberOfDays')
 
 class Query(graphene.ObjectType):
     buyerPackages = graphene.List(BuyerPackageType)
