@@ -24,8 +24,7 @@ class Query(graphene.ObjectType):
         if search:
             filters = (
                     Q(name__icontains=search) |
-                    Q(alternative_name__icontains=search) |
-                    Q(description__icontains=search)
+                    Q(alternative_name__icontains=search)
             )
 
             rs = rs.filter(filters)
