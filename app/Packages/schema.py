@@ -20,5 +20,5 @@ class Query(graphene.ObjectType):
     def resolve_buyerPackages(self, info):
         return BuyerPackage.objects.all()
 
-    def resolve_buyerPackages(self, info):
+    def resolve_farmPackages(self, info):
         return FarmPackage.objects.all()
