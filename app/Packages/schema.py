@@ -1,4 +1,4 @@
-from .models import BuyerPackage, FarmPackage
+from .models import BuyerPackage, FarmPackage, Period
 import graphene
 from graphene_django import DjangoObjectType
 
@@ -12,6 +12,9 @@ class FarmPackageType(DjangoObjectType):
     class Meta:
         model = FarmPackage
 
+class PeriodType(DjangoObjectType):
+    class Meta:
+        model = Period
 
 class Query(graphene.ObjectType):
     buyerPackages = graphene.List(BuyerPackageType)
@@ -22,3 +25,6 @@ class Query(graphene.ObjectType):
 
     def resolve_farmPackages(self, info):
         return FarmPackage.objects.all()
+
+    def resolve_PeriodType(self, info):
+        return Period.objects.all()
