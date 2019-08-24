@@ -12,14 +12,17 @@ class FarmPackageType(DjangoObjectType):
     class Meta:
         model = FarmPackage
 
+
 class PeriodType(DjangoObjectType):
     class Meta:
         model = Period
         only_fields = ('id', 'name', 'numberOfDays')
 
+
 class Query(graphene.ObjectType):
     buyerPackages = graphene.List(BuyerPackageType)
     farmPackages = graphene.List(FarmPackageType)
+    period = graphene.Field(PeriodType)
 
     def resolve_buyerPackages(self, info):
         return BuyerPackage.objects.all()
@@ -27,5 +30,5 @@ class Query(graphene.ObjectType):
     def resolve_farmPackages(self, info):
         return FarmPackage.objects.all()
 
-    def resolve_PeriodType(self, info):
+    def resolve_period(self, info):
         return Period.objects.all()
