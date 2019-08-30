@@ -12,7 +12,7 @@ class Buyer(models.Model):
     longitude = models.FloatField(null=True)
     package = models.ForeignKey(BuyerPackage, on_delete=models.SET_NULL, null=True)
     owner = models.ForeignKey(Member, on_delete=models.CASCADE, related_name='buyingProfile', )
-    packages_buying_Date = models.DateTimeField()
+    packages_buying_Date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.name
