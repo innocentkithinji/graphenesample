@@ -23,6 +23,13 @@ class Query(graphene.ObjectType):
             )
             mbr = mbr.filter(filters)
 
+        if phone:
+            filters = (
+                Q(phoneNumber__icontains=phone)
+            )
+
+            mbr = mbr.filter(filters)
+
         return mbr
 
     def resolve_members_phone(self, info, phone=None):
