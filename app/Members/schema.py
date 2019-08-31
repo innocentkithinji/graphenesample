@@ -11,7 +11,7 @@ class MemberType(DjangoObjectType):
 
 
 class Query(graphene.ObjectType):
-    members = graphene.List(MemberType, uid=graphene.String())
+    members = graphene.List(MemberType, uid=graphene.String(), phone=graphene.String())
     members_phone = graphene.List(MemberType, phone=graphene.String())
 
     def resolve_members(self, info, uid=None, phone=None):
