@@ -12,8 +12,9 @@ class MemberType(DjangoObjectType):
 
 class Query(graphene.ObjectType):
     members = graphene.List(MemberType, uid=graphene.String())
+    members_phone = graphene.List(MemberType, phone=graphene.String())
 
-    def resolve_members(self, info, uid=None):
+    def resolve_members(self, info, uid=None, phone=None):
         mbr = Member.objects.all()
 
         if uid:
@@ -22,6 +23,17 @@ class Query(graphene.ObjectType):
             )
             mbr = mbr.filter(filters)
 
+        return mbr
+
+    def resolve_members_phone(self, info, phone=None):
+        mbr = Member.objects.all()
+
+        if phone:
+            filters = (
+                Q(phoneNumber__icontains=phone)
+            )
+
+            mbr = mbr.filter(filters)
         return mbr
 
 
