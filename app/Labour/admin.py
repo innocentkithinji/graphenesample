@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import LabourService
+from .models import LabourServices
 # Register your models here.
 
-admin.site.register(LabourService)
+admin.site.register(LabourServices)

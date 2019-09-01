@@ -1,20 +1,20 @@
 from django.db.models import Q
-from .models import LabourService
+from .models import LabourServices
 import graphene
 from graphene_django import DjangoObjectType
 
 
 class LabourType(DjangoObjectType):
     class Meta:
-        model = LabourService
+        model = LabourServices
 
 
 class Query(graphene.ObjectType):
-    services = graphene.List(LabourType, name=graphene.String())
+    LabourServicez = graphene.List(LabourType, name=graphene.String())
 
-    def resolve_services(self, name=None):
-        srv = LabourService.objects.all()
-
+    def resolve_LabourServicez(self, name=None):
+        srv = LabourServices.objects.all()
+        print(srv)
         if name:
             filters = (
                 Q(title__icontains=name)
