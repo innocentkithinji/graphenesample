@@ -10,9 +10,9 @@ class LabourType(DjangoObjectType):
 
 
 class Query(graphene.ObjectType):
-    LabourServicez = graphene.List(LabourType, name=graphene.String())
+    services = graphene.List(LabourType, name=graphene.String())
 
-    def resolve_LabourServicez(self, info, name=None):
+    def resolve_services(self, info, name=None):
         srv = LabourService.objects.all()
         print(srv)
         if name:
