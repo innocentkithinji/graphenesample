@@ -17,7 +17,7 @@ class Query(graphene.ObjectType):
 
         if name:
             filters = (
-                Q(title_icontains=name)
+                Q(title__icontains=name)
             )
             srv = srv.filter(filters)
 
