@@ -3,7 +3,7 @@ from django.db import models
 
 # Create your models here.
 
-class LabourServices(models.Model):
+class LabourService(models.Model):
     title = models.CharField(max_length=70)
     description = models.TextField()
 
