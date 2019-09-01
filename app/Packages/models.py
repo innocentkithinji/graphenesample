@@ -24,7 +24,7 @@ class FarmPackage(models.Model):
 class LabourersPackage(models.Model):
     name = models.CharField(max_length=30)
     number_of_services = models.IntegerField()
-    period = models.ForeignKey(Period, on_delete=models.SET_NULL, null=True, related_name="FPackage")
+    period = models.ForeignKey(Period, on_delete=models.SET_NULL, null=True, related_name="LPackage")
     price = models.IntegerField()
 
     def __str__(self):
