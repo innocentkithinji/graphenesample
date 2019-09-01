@@ -21,6 +21,16 @@ class FarmPackage(models.Model):
         return self.name
 
 
+class LabourersPackage(models.Model):
+    name = models.CharField(max_length=30)
+    number_of_services = models.IntegerField()
+    period = models.ForeignKey(Period, on_delete=models.SET_NULL, null=True, related_name="FPackage")
+    price = models.IntegerField()
+
+    def __str__(self):
+        return self.name
+
+
 class BuyerPackage(models.Model):
     name = models.CharField(max_length=30)
     searches = models.BooleanField()
