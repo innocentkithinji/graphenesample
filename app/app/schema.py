@@ -12,10 +12,11 @@ from Sales.schema import Query as SalesQuery, Mutation as SaleMutation
 from Units.schema import Query as UnitsQuery
 from Tenders.schema import Query as TenderQuery, Mutation as TenderMutation
 from Labour.schema import Query as LabourQuery
+from Wards.schema import Query as WardsQuery
 
 
 class Query(CountyQuery, CountryQuery, MembersQuery, BuyerQuery, CategoryQuery, TenderQuery, FarmQuery, PackagesQuery,
-            ProductsQuery, LabourQuery, SalesQuery, UnitsQuery, graphene.ObjectType):
+            ProductsQuery, LabourQuery, SalesQuery, UnitsQuery, WardsQuery, graphene.ObjectType):
     pass
 
 
