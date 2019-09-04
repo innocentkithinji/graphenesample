@@ -13,14 +13,16 @@ from Units.schema import Query as UnitsQuery
 from Tenders.schema import Query as TenderQuery, Mutation as TenderMutation
 from Labour.schema import Query as LabourQuery
 from Wards.schema import Query as WardsQuery
-from Chats.schema import Query as ChatQuery
+from Chats.schema import Query as ChatQuery, Mutation as ChatMutation
+
 
 class Query(CountyQuery, CountryQuery, MembersQuery, BuyerQuery, CategoryQuery, TenderQuery, FarmQuery, PackagesQuery,
             ProductsQuery, LabourQuery, SalesQuery, UnitsQuery, WardsQuery, ChatQuery, graphene.ObjectType):
     pass
 
 
-class Mutation(MemberMutation, FarmMutation, TenderMutation, BuyerMutation, SaleMutation, graphene.ObjectType):
+class Mutation(MemberMutation, FarmMutation, TenderMutation, BuyerMutation, SaleMutation, ChatMutation,
+               graphene.ObjectType):
     pass
 
 
