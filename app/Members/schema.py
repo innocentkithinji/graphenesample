@@ -74,7 +74,7 @@ class updateUser(graphene.Mutation):
         member.phoneNumber = phoneNumber
         member.uid = uid
         member.fcm_id = fcm_id
-
+        member.save()
 
         return updateUser(member=member)
 
