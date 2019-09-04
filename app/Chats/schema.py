@@ -1,6 +1,6 @@
 from .models import Chat
-from app.Farm.models import Farm
-from app.Buyer.models import Buyer
+from Farm.models import Farm
+from Buyer.models import Buyer
 import graphene
 from graphene_django import DjangoObjectType
 
