@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'Tenders',
     'Labour',
     'Wards',
+    'Chats',
 ]
 
 GRAPHENE = {
