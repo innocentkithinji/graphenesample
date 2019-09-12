@@ -68,12 +68,16 @@ class updateUser(graphene.Mutation):
         uid = graphene.String()
         fcm_id = graphene.String()
 
-    def mutate(self, info, memberId, phoneNumber, uid, fcm_id):
+    def mutate(self, info, memberId, phoneNumber=None, uid=None, fcm_id=None):
         member = Member.objects.get(id=memberId)
 
-        member.phoneNumber = phoneNumber
-        member.uid = uid
-        member.fcm_id = fcm_id
+        if phoneNumber:
+            member.phoneNumber = phoneNumber
+        if uid:
+            member.uid = uid
+        if fcm_id:
+            member.fcm_id = fcm_id
+
         member.save()
 
         return updateUser(member=member)
