@@ -56,8 +56,7 @@ class SendNotification(graphene.Mutation):
         print(regid)
         # regid = "e7vP0PmAWio:APA91bFZq1kVw7sNo6xee1FJPuxQ69GQm6R-H5G8jmt5c1Pf1a6fyFDqgJqsKSk99gc1OFGVnKnIRt6r6KLYi8-JPXyLULzctALTsS-aItsrmZ3MsX6BCqExEFVKigFME7vyz9hankNm"
         result = push.notify_single_device(registration_id=regid, message_title=title, message_body=Message)
-
-        return result
+        print(result)
 
 
 class Mutation(graphene.ObjectType):
