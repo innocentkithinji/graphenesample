@@ -38,6 +38,8 @@ class AddChat(graphene.Mutation):
 
 
 class SendNotification(graphene.Mutation):
+    chat = graphene.Field(ChatType)
+
     class Arguments:
         partyId = graphene.Int(required=True)
         type = graphene.String(required=True)
