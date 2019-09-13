@@ -48,20 +48,19 @@ class SendNotification(graphene.Mutation):
         action = graphene.String(required=True)
 
     def mutate(self, info, partyId, type, Message, title, action):
+        push = FCMNotification(
+            api_key="AAAAr7bm4Pw:APA91bGzMCMzPkoSPvqXkbSFGe5cRBjMDWRKV8tIkVGg76UwcYARrmMWrQjkx9fDsG"
+                    "GcrrfcDbkLuhvmmeDtzPsdW22MnNzND_14rEMVTLOpGXL67G8tj88sKQrKrs0iIhWxXwqGEbiA")
         if type is "buyer":
+            print("Buyer Being Sent")
             buyer = Buyer.objects.get(id=partyId)
-            push = FCMNotification(
-                api_key="AAAAr7bm4Pw:APA91bGzMCMzPkoSPvqXkbSFGe5cRBjMDWRKV8tIkVGg76UwcYARrmMWrQjkx9fDsG"
-                        "GcrrfcDbkLuhvmmeDtzPsdW22MnNzND_14rEMVTLOpGXL67G8tj88sKQrKrs0iIhWxXwqGEbiA")
             regid = buyer.owner.fcm_id
             print(regid)
             result = push.notify_single_device(registration_id=regid, message_title=title, message_body=Message)
             print(result)
         else:
+            print("Seller Being Sent Notification")
             farm = Farm.objects.get(id=partyId)
-            push = FCMNotification(
-                api_key="AAAAr7bm4Pw:APA91bGzMCMzPkoSPvqXkbSFGe5cRBjMDWRKV8tIkVGg76UwcYARrmMWrQjkx9fDsG"
-                        "GcrrfcDbkLuhvmmeDtzPsdW22MnNzND_14rEMVTLOpGXL67G8tj88sKQrKrs0iIhWxXwqGEbiA")
             regid = farm.owner.fcm_id
             print(regid)
             result = push.notify_single_device(registration_id=regid, message_title=title, message_body=Message)
