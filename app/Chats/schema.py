@@ -60,6 +60,7 @@ class SendNotification(graphene.Mutation):
             print(result)
         else:
             print("Seller Being Sent Notification")
+            print(type)
             farm = Farm.objects.get(id=partyId)
             regid = farm.owner.fcm_id
             print(regid)
