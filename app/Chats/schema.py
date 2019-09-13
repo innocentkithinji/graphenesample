@@ -51,7 +51,7 @@ class SendNotification(graphene.Mutation):
         push = FCMNotification(
             api_key="AAAAr7bm4Pw:APA91bGzMCMzPkoSPvqXkbSFGe5cRBjMDWRKV8tIkVGg76UwcYARrmMWrQjkx9fDsG"
                     "GcrrfcDbkLuhvmmeDtzPsdW22MnNzND_14rEMVTLOpGXL67G8tj88sKQrKrs0iIhWxXwqGEbiA")
-        if type is "buyer":
+        if type == "buyer":
             print("Buyer Being Sent")
             buyer = Buyer.objects.get(id=partyId)
             regid = buyer.owner.fcm_id
