@@ -53,7 +53,7 @@ class UpdateSale(graphene.Mutation):
         price = graphene.Float()
 
     def mutate(self, info, sale_id, farm_id=None, product_id=None, unit_id=None, amount=None, price=None):
-        sale = Sale.object.get(id=sale_id)
+        sale = Sale.objects.get(id=sale_id)
 
         if farm_id:
             farm = Farm.objects.get(id=farm_id)
