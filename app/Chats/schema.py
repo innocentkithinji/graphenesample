@@ -54,7 +54,7 @@ class SendNotification(graphene.Mutation):
         if type == "buyer":
             print("Buyer Being Sent")
             print(partyId)
-            print(type(partyId))
+            # print(type(partyId))
             buyer = Buyer.objects.get(id=partyId)
             regid = buyer.owner.fcm_id
             print(regid)
@@ -63,7 +63,7 @@ class SendNotification(graphene.Mutation):
         else:
             print("Seller Being Sent Notification")
             print(partyId)
-            print(type(partyId))
+            # print(type(partyId))
             farm = Farm.objects.get(id=partyId)
             regid = farm.owner.fcm_id
             print(regid)

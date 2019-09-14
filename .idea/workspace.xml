@@ -39,8 +39,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Chats/schema.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="124">
-              <caret line="55" column="40" lean-forward="true" selection-start-line="55" selection-start-column="40" selection-end-line="55" selection-end-column="40" />
+            <state relative-caret-position="430">
+              <caret line="65" column="32" selection-start-line="65" selection-start-column="32" selection-end-line="65" selection-end-column="32" />
               <folding>
                 <element signature="e#0#24#0" expanded="true" />
               </folding>
@@ -206,12 +206,12 @@
         <option value="$PROJECT_DIR$/app/Chats/admin.py" />
         <option value="$PROJECT_DIR$/app/Buyer/models.py" />
         <option value="$PROJECT_DIR$/app/Members/schema.py" />
-        <option value="$PROJECT_DIR$/app/Chats/schema.py" />
         <option value="$PROJECT_DIR$/app/Sales/schema.py" />
         <option value="$PROJECT_DIR$/app/Farm/admin.py" />
         <option value="$PROJECT_DIR$/app/Farm/models.py" />
         <option value="$PROJECT_DIR$/app/Buyer/admin.py" />
         <option value="$PROJECT_DIR$/app/Wards/models.py" />
+        <option value="$PROJECT_DIR$/app/Chats/schema.py" />
       </list>
     </option>
   </component>
@@ -323,12 +323,12 @@
       <workItem from="1568005473447" duration="74000" />
       <workItem from="1568275262812" duration="9847000" />
       <workItem from="1568351280632" duration="369000" />
-      <workItem from="1568382307167" duration="14507000" />
+      <workItem from="1568382307167" duration="14876000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="127381000" />
+    <option name="totallyTimeSpent" value="127750000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
@@ -766,8 +766,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Chats/schema.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="55" column="40" lean-forward="true" selection-start-line="55" selection-start-column="40" selection-end-line="55" selection-end-column="40" />
+        <state relative-caret-position="430">
+          <caret line="65" column="32" selection-start-line="65" selection-start-column="32" selection-end-line="65" selection-end-column="32" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
           </folding>
