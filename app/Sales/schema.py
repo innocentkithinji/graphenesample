@@ -91,3 +91,4 @@ class DeleteSale(graphene.Mutation):
 class Mutation(graphene.ObjectType):
     create_sale = CreateSale.Field()
     update_sale = UpdateSale.Field()
+    delete_sale = DeleteSale.Field()
