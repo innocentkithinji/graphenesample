@@ -80,7 +80,7 @@ class DeleteSale(graphene.Mutation):
     class Arguments:
         sale_id = graphene.Int(required=True)
 
-    def Mutate(self, info, sale_id):
+    def mutate(self, info, sale_id):
         sale = Sale.objects.get(id=sale_id)
 
         sale.delete()
