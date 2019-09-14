@@ -74,6 +74,20 @@ class UpdateSale(graphene.Mutation):
         return UpdateSale(sale=sale)
 
 
+class DeleteSale(graphene.Mutation):
+    sale = graphene.Field(SaleType)
+
+    class Arguments:
+        sale_id = graphene.Int(required=True)
+
+    def Mutate(self, info, sale_id):
+        sale = Sale.objects.get(id=sale_id)
+
+        sale.delete()
+
+        return DeleteSale(sale=sale)
+
+
 class Mutation(graphene.ObjectType):
     create_sale = CreateSale.Field()
     update_sale = UpdateSale.Field()
