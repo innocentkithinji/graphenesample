@@ -8,7 +8,7 @@ from Wards.models import Ward
 class Farm(models.Model):
     name = models.CharField(max_length=50)
     county = models.ForeignKey(County, on_delete=models.CASCADE, related_name="farms")
-    Ward = models.ForeignKey(Ward, on_delete=models.CASCADE, related_name="farms", default=Ward.objects.get(id=1))
+    Ward = models.ForeignKey(Ward, on_delete=models.CASCADE, related_name="farms", null=True)
     latitude = models.FloatField(null=True)
     longitude = models.FloatField(null=True)
     package = models.ForeignKey(FarmPackage, on_delete=models.SET_NULL, null=True)
