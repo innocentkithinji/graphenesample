@@ -9,4 +9,4 @@ class Ward(models.Model):
     county = models.ForeignKey(County, on_delete=models.CASCADE, related_name="wards")
 
     def __str__(self):
-        return self.name
+        return self.name.capitalize()
