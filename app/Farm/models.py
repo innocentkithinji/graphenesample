@@ -2,13 +2,13 @@ from django.db import models
 from County.models import County
 from Packages.models import FarmPackage
 from Members.models import Member
-from app.Wards.models import Ward
+from Wards.models import Ward
 
 # Create your models here.
 class Farm(models.Model):
     name = models.CharField(max_length=50)
     county = models.ForeignKey(County, on_delete=models.CASCADE, related_name="farms")
-    Ward = models.ForeignKey(County, on_delete=models.CASCADE, related_name="farms")
+    Ward = models.ForeignKey(Ward, on_delete=models.CASCADE, related_name="farms")
     latitude = models.FloatField(null=True)
     longitude = models.FloatField(null=True)
     package = models.ForeignKey(FarmPackage, on_delete=models.SET_NULL, null=True)
