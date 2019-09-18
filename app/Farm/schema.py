@@ -4,7 +4,7 @@ from graphene_django import DjangoObjectType
 from County.models import County
 from Packages.models import FarmPackage
 from Members.models import Member
-
+from Wards.models import Ward
 
 class FarmType(DjangoObjectType):
     class Meta:
@@ -24,21 +24,22 @@ class CreateFarm(graphene.Mutation):
     class Arguments:
         name = graphene.String(required=True)
         county_id = graphene.Int(required=True)
-        latitude = graphene.Float(required=True)
-        longitude = graphene.Float(required=True)
         package_id = graphene.Int(required=True)
         owner_id = graphene.Int(required=True)
+        ward_id = graphene.Int(required=True)
 
-    def mutate(self, info, county_id, name, latitude, longitude, package_id, owner_id):
-        farm = Farm(name=name, latitude=latitude, longitude=longitude)
+    def mutate(self, info, county_id, name, ward_id, package_id, owner_id):
+        farm = Farm(name=name)
 
         county = County.objects.get(id=county_id)
         package = FarmPackage.objects.get(id=package_id)
         owner = Member.objects.get(id=owner_id)
+        ward = Ward.objects.get(id=ward_id)
 
         farm.county = county
         farm.package = package
         farm.owner = owner
+        farm.Ward = ward
         farm.valid = True
 
         farm.save()
