@@ -45,9 +45,12 @@ class CreateAgent(graphene.Mutation):
     def mutate(self, info, name, email):
         agent = Agent(name=name, email=email)
 
-        agent.code = self.genRandomUniqueCode
+        agent.code = random.randint(1,999999)
 
-        agent.save()
+        try:
+            agent.save()
+        except:
+            print("Error Caught")
 
         return CreateAgent(agent=agent)
 
