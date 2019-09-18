@@ -16,7 +16,7 @@ class Query(graphene.ObjectType):
         return Agent.objects.all()
 
 
-class CreateAgent(graphene.Mutation):
+class createAgent(graphene.Mutation):
     agent = graphene.Field(AgentsType)
 
     class Arguments:
@@ -28,8 +28,8 @@ class CreateAgent(graphene.Mutation):
 
         agent.save()
 
-        return CreateAgent(agent=agent)
+        return createAgent(agent=agent)
 
 
 class Mutation(graphene.ObjectType):
-    create_agent = CreateAgent.Field()
+    create_agent = createAgent.Field()
