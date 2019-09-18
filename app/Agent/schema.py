@@ -10,10 +10,18 @@ class AgentsType(DjangoObjectType):
 
 
 class Query(graphene.ObjectType):
-    agents = graphene.List(AgentsType)
+    agents = graphene.List(AgentsType, email=graphene.String)
 
-    def resolve_agents(self, info):
-        return Agent.objects.all()
+    def resolve_agents(self, info, email=None):
+        agents = Agent.objects.all()
+
+        if email:
+            filterz = (
+                Q(email__icontains=email)
+            )
+            agents = agents.filter(filterz)
+
+        return agents
 
 
 class CreateAgent(graphene.Mutation):
