@@ -35,6 +35,7 @@ class CreateAgent(graphene.Mutation):
 
     def genRandomUniqueCode(self):
         x = random.randint(1, 999999)
+        print(x)
         ag = Agent.objects.get(code=x)
         if ag:
             return self.genRandomUniqueCode()
