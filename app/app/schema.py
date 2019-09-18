@@ -22,7 +22,7 @@ class Query(CountyQuery, CountryQuery, MembersQuery, BuyerQuery, CategoryQuery, 
     pass
 
 
-class Mutation(MemberMutation, FarmMutation, TenderMutation, BuyerMutation, SaleMutation, ChatMutation, AgentQuery,
+class Mutation(MemberMutation, FarmMutation, TenderMutation, BuyerMutation, SaleMutation, ChatMutation, AgentMutation,
                graphene.ObjectType):
     pass
 
