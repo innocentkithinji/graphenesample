@@ -10,7 +10,7 @@ class AgentsType(DjangoObjectType):
 
 
 class Query(graphene.ObjectType):
-    agents = graphene.List(AgentsType, email=graphene.String)
+    agents = graphene.List(AgentsType, email=graphene.String())
 
     def resolve_agents(self, info, email=None):
         agents = Agent.objects.all()
