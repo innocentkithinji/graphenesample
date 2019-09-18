@@ -38,14 +38,14 @@ class CreateAgent(graphene.Mutation):
         print(x)
         ag = Agent.objects.get(code=x)
         if ag:
-            return self.genRandomUniqueCode()
+            return self.genRandomUniqueCode
         else:
             return x
 
     def mutate(self, info, name, email):
         agent = Agent(name=name, email=email)
 
-        agent.code = self.genRandomUniqueCode()
+        agent.code = self.genRandomUniqueCode
 
         agent.save()
 
