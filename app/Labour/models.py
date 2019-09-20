@@ -32,4 +32,4 @@ class LaboursRequest(models.Model):
     payPeriod = models.ForeignKey(PayPeriod, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.id
+        return str(self.id)
