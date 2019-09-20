@@ -11,7 +11,7 @@ from Products.schema import Query as ProductsQuery
 from Sales.schema import Query as SalesQuery, Mutation as SaleMutation
 from Units.schema import Query as UnitsQuery
 from Tenders.schema import Query as TenderQuery, Mutation as TenderMutation
-from Labour.schema import Query as LabourQuery
+from Labour.schema import Query as LabourQuery, Mutation as LabourSMutation
 from Wards.schema import Query as WardsQuery
 from Chats.schema import Query as ChatQuery, Mutation as ChatMutation
 from Agent.schema import Query as AgentQuery, Mutation as AgentMutation
@@ -23,7 +23,7 @@ class Query(CountyQuery, CountryQuery, MembersQuery, BuyerQuery, CategoryQuery, 
 
 
 class Mutation(MemberMutation, FarmMutation, TenderMutation, BuyerMutation, SaleMutation, ChatMutation, AgentMutation,
-               graphene.ObjectType):
+               LabourSMutation, graphene.ObjectType):
     pass
 
 
