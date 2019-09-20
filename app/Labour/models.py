@@ -24,3 +24,6 @@ class LaboursRequest(models.Model):
     periodNumber = models.IntegerField(null=False)
     pay = models.FloatField(null=False)
     payPeriod = models.CharField(max_length=30, choices=PERIOD_CHOICES, default=1)
+
+    def __str__(self):
+        return self.id
