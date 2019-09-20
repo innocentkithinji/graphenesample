@@ -17,6 +17,9 @@ class LabourService(models.Model):
 class PayPeriod(models.Model):
     name = models.CharField(max_length=30)
 
+    def __str__(self):
+        return self.name
+
 class LaboursRequest(models.Model):
     PERIOD_CHOICES = [('1', "Day"), ('2', "Week"), ('3', "Month")]
     ward = models.ForeignKey(Ward, related_name="labourServiceRequest", on_delete=models.CASCADE)
