@@ -10,4 +10,4 @@ class Agent(models.Model):
     code = models.IntegerField(unique=True, default=random.randint(1, 999999))
 
     def __str__(self):
-        return self.email, self.code
+        return self.email
