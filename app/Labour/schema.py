@@ -1,3 +1,5 @@
+import datetime
+
 from django.db.models import Q
 from Wards.models import Ward
 from .models import LabourService, PayPeriod, LaboursRequest
@@ -31,7 +33,7 @@ class Query(graphene.ObjectType):
         return srv
 
     def resolve_labourRequests(self, info, ward=None, service=None):
-        lrs = LaboursRequest.objects.all()
+        lrs = LaboursRequest.objects.filter(startDate__gt=datetime.datetime.now())
         if ward:
             w = Ward.objects.get(id=ward)
             lrs = LaboursRequest.objects.filter(ward=w)
