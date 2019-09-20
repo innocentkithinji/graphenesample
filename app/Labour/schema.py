@@ -2,7 +2,6 @@ from django.db.models import Q
 from .models import LabourService, PayPeriod, LaboursRequest
 import graphene
 from graphene_django import DjangoObjectType
-from app.Wards.models import Ward
 
 class LabourType(DjangoObjectType):
     class Meta:
