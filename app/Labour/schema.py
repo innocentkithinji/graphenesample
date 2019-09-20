@@ -1,4 +1,5 @@
 from django.db.models import Q
+from Wards.models import Ward
 from .models import LabourService, PayPeriod, LaboursRequest
 import graphene
 from graphene_django import DjangoObjectType
@@ -29,5 +30,7 @@ class Query(graphene.ObjectType):
 
     def resolve_labourRequests(self, info, ward=None, service=None):
         lrs = LaboursRequest.objects.all()
-
+        if ward:
+            w = Ward.objects.get(id=ward)
+            lrs = LaboursRequest.objects.filter(ward=w)
         return lrs
