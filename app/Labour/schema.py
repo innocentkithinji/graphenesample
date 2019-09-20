@@ -20,9 +20,15 @@ class LabourRequestType(DjangoObjectType):
         model = LaboursRequest
 
 
+class PayPeriodsTypes(DjangoObjectType):
+    class Meta:
+        model = PayPeriod
+
+
 class Query(graphene.ObjectType):
     services = graphene.List(LabourType, name=graphene.String())
     labourRequests = graphene.List(LabourRequestType, ward=graphene.Int(), service=graphene.Int())
+    payPeriod = graphene.List(PayPeriodsTypes)
 
     def resolve_services(self, info, name=None):
         srv = LabourService.objects.all()
@@ -34,6 +40,10 @@ class Query(graphene.ObjectType):
             srv = srv.filter(filters)
 
         return srv
+
+    def resolve_payPeriod(self, info):
+        periods = PayPeriod.objects.all()
+        return periods
 
     def resolve_labourRequests(self, info, ward=None, service=None):
         lrs = LaboursRequest.objects.filter(startDate__gt=datetime.datetime.now())
@@ -66,7 +76,8 @@ class createLabourReq(graphene.Mutation):
         pay = graphene.Int(required=True)
         periodLength = graphene.Int(required=True)
 
-    def mutate(self, info, ward, farm, buyer, service, startDate, time, payPeriod, pay, periodLength):
+    def mutate(self, info, ward, farm=None, buyer=None, service=None, startDate=None, time=None, payPeriod=None,
+               pay=None, periodLength=None):
         request = LaboursRequest()
         w = Ward.objects.get(id=ward)
         if farm:
