@@ -4,9 +4,11 @@ from .models import LabourService, PayPeriod, LaboursRequest
 import graphene
 from graphene_django import DjangoObjectType
 
+
 class LabourType(DjangoObjectType):
     class Meta:
         model = LabourService
+
 
 class LabourRequestType(DjangoObjectType):
     class Meta:
@@ -36,5 +38,10 @@ class Query(graphene.ObjectType):
         if service:
             s = LabourService.objects.get(id=service)
             lrs = LaboursRequest.objects.filter(service=s)
+
+        if ward and service:
+            w = Ward.objects.get(id=ward)
+            s = LabourService.objects.get(id=service)
+            lrs = LaboursRequest.objects.filter(service=s).filter(ward=w)
 
         return lrs
