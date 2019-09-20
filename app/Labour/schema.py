@@ -33,4 +33,8 @@ class Query(graphene.ObjectType):
         if ward:
             w = Ward.objects.get(id=ward)
             lrs = LaboursRequest.objects.filter(ward=w)
+        if service:
+            s = LabourService.objects.filter(id=service)
+            lrs = LaboursRequest.objects.filter(service=s)
+
         return lrs
