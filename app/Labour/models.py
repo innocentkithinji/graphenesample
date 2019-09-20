@@ -15,7 +15,7 @@ class LabourService(models.Model):
 
 
 class LaboursRequest(models.Model):
-    PERIOD_CHOICES = [(1, "Day"), (2, "Week"), (3, "Month")]
+    PERIOD_CHOICES = [('1', "Day"), ('2', "Week"), ('3', "Month")]
     ward = models.ForeignKey(Ward, related_name="labourServiceRequest", on_delete=models.CASCADE)
     farm = models.ForeignKey(Farm, on_delete=models.CASCADE, null=True, related_name="LabourRequests", blank=True)
     buyer = models.ForeignKey(Buyer, on_delete=models.CASCADE, null=True, related_name="LabourRequests", blank=True)
