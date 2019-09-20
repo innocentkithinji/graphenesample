@@ -1,5 +1,3 @@
-media
 Pipfile
 Pipfile.lock
 __pycache__
-Agent/migrations/*.py
