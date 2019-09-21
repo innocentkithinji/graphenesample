@@ -74,10 +74,11 @@ class createLabourReq(graphene.Mutation):
         time = graphene.String(required=True)
         payPeriod = graphene.Int(required=True)
         pay = graphene.Int(required=True)
+        workers = graphene.Int(required=True)
         periodLength = graphene.Int(required=True)
 
-    def mutate(self, info, ward, farm=None, buyer=None, service=None, startDate=None, time=None, payPeriod=None,
-               pay=None, periodLength=None):
+    def mutate(self, info, ward, service, startDate, time, payPeriod, pay,
+               periodLength, workers, farm=None, buyer=None):
         request = LaboursRequest()
         w = Ward.objects.get(id=ward)
         if farm:
@@ -95,7 +96,7 @@ class createLabourReq(graphene.Mutation):
         request.pay = pay
         request.periodNumber = periodLength
         request.startDate = start_date_time
-
+        request.workers = workers
         request.save()
 
         return createLabourReq(request=request)
