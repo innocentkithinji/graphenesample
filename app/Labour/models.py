@@ -29,6 +29,7 @@ class LaboursRequest(models.Model):
     startDate = models.DateTimeField(null=False)
     periodNumber = models.IntegerField(null=False)
     pay = models.FloatField(null=False)
+    workers = models.IntegerField()
     payPeriod = models.ForeignKey(PayPeriod, on_delete=models.CASCADE)
 
     def __str__(self):
