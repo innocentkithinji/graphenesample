@@ -15,3 +15,14 @@ class Query(graphene.ObjectType):
         labourers = Labourer.objects.all()
 
         return labourers
+
+
+class CreateLabourer(graphene.Mutation):
+    labourer = graphene.Field(LabourerType)
+
+    class Arguments:
+        name = graphene.String(required=True)
+        county = graphene.Int(required=True)
+        ward = graphene.Int(required=True)
+        services = graphene.List(required=True)
+        packageId = graphene.Int(required=True)
