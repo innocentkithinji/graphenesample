@@ -26,3 +26,6 @@ class CreateLabourer(graphene.Mutation):
         ward = graphene.Int(required=True)
         services = graphene.List(required=True, of_type=graphene.Int)
         packageId = graphene.Int(required=True)
+
+    def mutate(self, info):
+        pass
