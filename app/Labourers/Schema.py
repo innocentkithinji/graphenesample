@@ -11,5 +11,7 @@ class LabourerType(DjangoObjectType):
 class Query(graphene.ObjectType):
     labourers = graphene.List(LabourerType)
 
-    def resolve_labourers(self, info):
-        return Labourer.objects.all()
+    def resolve_agents(self, info, email=None):
+        labourers = Labourer.objects.all()
+
+        return labourers
