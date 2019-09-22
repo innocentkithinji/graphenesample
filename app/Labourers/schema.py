@@ -24,5 +24,5 @@ class CreateLabourer(graphene.Mutation):
         name = graphene.String(required=True)
         county = graphene.Int(required=True)
         ward = graphene.Int(required=True)
-        services = graphene.List(required=True)
+        services = graphene.List(required=True, of_type=graphene.Int)
         packageId = graphene.Int(required=True)
