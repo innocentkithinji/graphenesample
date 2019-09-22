@@ -15,10 +15,12 @@ from Labour.schema import Query as LabourQuery, Mutation as LabourSMutation
 from Wards.schema import Query as WardsQuery
 from Chats.schema import Query as ChatQuery, Mutation as ChatMutation
 from Agent.schema import Query as AgentQuery, Mutation as AgentMutation
+from Labourers.Schema import Query as LabourersQuery
 
 
 class Query(CountyQuery, CountryQuery, MembersQuery, BuyerQuery, CategoryQuery, TenderQuery, FarmQuery, PackagesQuery,
-            ProductsQuery, LabourQuery, SalesQuery, UnitsQuery, WardsQuery, ChatQuery, AgentQuery, graphene.ObjectType):
+            ProductsQuery, LabourQuery, SalesQuery, UnitsQuery, WardsQuery, ChatQuery, AgentQuery, LabourQuery,
+            graphene.ObjectType):
     pass
 
 
