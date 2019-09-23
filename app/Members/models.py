@@ -6,7 +6,7 @@ class Member(models.Model):
     phoneNumber = models.CharField(max_length=20, unique=True)
     uid = models.CharField(max_length=60, unique=True)
     fcm_id = models.CharField(max_length=1024)
-    agent = models.ForeignKey(Agent, related_name="recruits")
+    agent = models.ForeignKey(Agent, related_name="recruits", null=True, on_delete=models.SET_NULL)
 
 
     def __str__(self):
