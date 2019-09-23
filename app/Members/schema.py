@@ -3,7 +3,7 @@ from django.db.models import Q
 from .models import Member
 import graphene
 from graphene_django import DjangoObjectType
-
+from app.Agent.models import Agent
 
 class MemberType(DjangoObjectType):
     class Meta:
@@ -51,9 +51,14 @@ class createUser(graphene.Mutation):
         phoneNumber = graphene.String(required=True)
         uid = graphene.String(required=True)
         fcm_id = graphene.String(required=True)
+        agent_code = graphene.String()
 
-    def mutate(self, info, phoneNumber, uid, fcm_id):
+    def mutate(self, info, phoneNumber, uid, fcm_id, agent_code=None):
         member = Member(phoneNumber=phoneNumber, uid=uid, fcm_id=fcm_id)
+        if agent_code:
+            agent = Agent.objects.get(code=agent_code)
+            member.agent = agent
+
         member.save()
 
         return createUser(member=member)
