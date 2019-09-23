@@ -57,6 +57,7 @@ class createUser(graphene.Mutation):
         member = Member(phoneNumber=phoneNumber, uid=uid, fcm_id=fcm_id)
         if agent_code:
             agent = Agent.objects.get(code=agent_code)
+            print(agent)
             member.agent = agent
 
         member.save()
