@@ -45,10 +45,9 @@ class createLabourer(graphene.Mutation):
             service = LabourService.objects.get(id=Service)
             LServices.append(service)
 
-        labourer.services = LServices
+        labourer.services.set(LServices)
         labourer.ward = ward
         labourer.owner = owner
-        labourer.county = county
         labourer.package = package
         labourer.save()
 
