@@ -21,7 +21,7 @@ class Query(graphene.ObjectType):
         return labourers
 
 
-class CreateLabourer(graphene.Mutation):
+class createLabourer(graphene.Mutation):
     labourer = graphene.Field(LabourerType)
 
     class Arguments:
@@ -46,11 +46,10 @@ class CreateLabourer(graphene.Mutation):
         labourer.ward = ward
         labourer.county = county
         labourer.package = package
+        labourer.save()
 
-        labourer.save();
-
-        return CreateLabourer(labourer=labourer)
+        return createLabourer(labourer=labourer)
 
 
 class Mutation(graphene.ObjectType):
-    create_labourer = CreateLabourer.Field()
+    create_Labourer = createLabourer.Field()
