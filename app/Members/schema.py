@@ -51,7 +51,7 @@ class createUser(graphene.Mutation):
         phoneNumber = graphene.String(required=True)
         uid = graphene.String(required=True)
         fcm_id = graphene.String(required=True)
-        agent_code = graphene.String()
+        agent_code = graphene.Int()
 
     def mutate(self, info, phoneNumber, uid, fcm_id, agent_code=None):
         member = Member(phoneNumber=phoneNumber, uid=uid, fcm_id=fcm_id)
