@@ -2,8 +2,7 @@ from County.models import County
 from Labour.models import LabourService
 from Packages.models import LabourersPackage
 from Wards.models import Ward
-
-from app.Members.models import Member
+from Members.models import Member
 from .models import Labourer
 import graphene
 from graphene_django import DjangoObjectType
