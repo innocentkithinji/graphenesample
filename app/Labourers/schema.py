@@ -27,15 +27,13 @@ class createLabourer(graphene.Mutation):
 
     class Arguments:
         name = graphene.String(required=True)
-        county = graphene.Int(required=True)
         ward = graphene.Int(required=True)
         services = graphene.List(required=True, of_type=graphene.Int)
         owner = graphene.Int(required=True)
         packageId = graphene.Int(required=True)
 
-    def mutate(self, info, name, county, ward, services, owner, packageId):
+    def mutate(self, info, name, ward, services, owner, packageId):
         labourer = Labourer(name=name)
-        county = County.objects.get(id=county)
         ward = Ward.objects.get(id=ward)
         package = LabourersPackage.objects.get(id=packageId)
         owner = Member.objects.get(id=owner)
