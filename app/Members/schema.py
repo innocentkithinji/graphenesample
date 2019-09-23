@@ -3,7 +3,7 @@ from django.db.models import Q
 from .models import Member
 import graphene
 from graphene_django import DjangoObjectType
-from app.Agent.models import Agent
+from Agent.models import Agent
 
 class MemberType(DjangoObjectType):
     class Meta:
