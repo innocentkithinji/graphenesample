@@ -15,7 +15,7 @@ from Labour.schema import Query as LabourQuery, Mutation as LabourSMutation
 from Wards.schema import Query as WardsQuery
 from Chats.schema import Query as ChatQuery, Mutation as ChatMutation
 from Agent.schema import Query as AgentQuery, Mutation as AgentMutation
-from Labourers.schema import Query as LabourerQuery
+from Labourers.schema import Query as LabourerQuery, Mutation as LabourerMutation
 
 
 class Query(CountyQuery, CountryQuery, MembersQuery, BuyerQuery, CategoryQuery, TenderQuery, FarmQuery, PackagesQuery,
@@ -25,7 +25,7 @@ class Query(CountyQuery, CountryQuery, MembersQuery, BuyerQuery, CategoryQuery, 
 
 
 class Mutation(MemberMutation, FarmMutation, TenderMutation, BuyerMutation, SaleMutation, ChatMutation, AgentMutation,
-               LabourSMutation, graphene.ObjectType):
+               LabourSMutation, LabourerMutation, graphene.ObjectType):
     pass
 
 
