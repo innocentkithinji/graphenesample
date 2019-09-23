@@ -2,6 +2,8 @@ from County.models import County
 from Labour.models import LabourService
 from Packages.models import LabourersPackage
 from Wards.models import Ward
+
+from app.Members.models import Member
 from .models import Labourer
 import graphene
 from graphene_django import DjangoObjectType
@@ -29,13 +31,15 @@ class createLabourer(graphene.Mutation):
         county = graphene.Int(required=True)
         ward = graphene.Int(required=True)
         services = graphene.List(required=True, of_type=graphene.Int)
+        owner = graphene.Int(required=True)
         packageId = graphene.Int(required=True)
 
-    def mutate(self, info, name, county, ward, services, packageId):
+    def mutate(self, info, name, county, ward, services, owner, packageId):
         labourer = Labourer(name=name)
         county = County.objects.get(id=county)
         ward = Ward.objects.get(id=ward)
         package = LabourersPackage.objects.get(id=packageId)
+        owner = Member.objects.get(id=owner)
 
         LServices = []
         for Service in services:
@@ -44,6 +48,7 @@ class createLabourer(graphene.Mutation):
 
         labourer.services = LServices
         labourer.ward = ward
+        labourer.owner = owner
         labourer.county = county
         labourer.package = package
         labourer.save()
