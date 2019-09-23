@@ -7,6 +7,7 @@ class Member(models.Model):
     uid = models.CharField(max_length=60, unique=True)
     fcm_id = models.CharField(max_length=1024)
     agent = models.ForeignKey(Agent, related_name="recruits", null=True, on_delete=models.SET_NULL)
+    joined = models.DateTimeField(auto_now_add=True)
 
 
     def __str__(self):
