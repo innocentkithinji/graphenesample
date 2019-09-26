@@ -24,7 +24,7 @@ class AddChat(graphene.Mutation):
     class Arguments:
         BuyerId = graphene.Int(required=True)
         SellerId = graphene.Int(required=True)
-        SaleId = graphene.Int()
+        SaleId = graphene.Int(require=True)
         DocId = graphene.String(required=True)
 
     def mutate(self, info, BuyerId, SellerId, DocId, SaleId=None):
