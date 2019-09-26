@@ -1,6 +1,7 @@
 from .models import Chat
 from Farm.models import Farm
 from Buyer.models import Buyer
+from Sales.models import Sale
 import graphene
 from graphene_django import DjangoObjectType
 from pyfcm import FCMNotification
@@ -32,7 +33,7 @@ class AddChat(graphene.Mutation):
         seller = Farm.objects.get(id=SellerId)
         chat = Chat(partyA=buyer, partyB=seller, docId=DocId)
         if SaleId:
-            sale = Farm.objects.get(id=SaleId)
+            sale = Sale.objects.get(id=SaleId)
             chat.sale = sale
         chat.save()
 
