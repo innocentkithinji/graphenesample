@@ -1,7 +1,7 @@
 from django.db import models
 from Farm.models import Farm;
 from Buyer.models import Buyer
-from app.Sales.models import Sale
+from Sales.models import Sale
 
 
 class Chat(models.Model):
