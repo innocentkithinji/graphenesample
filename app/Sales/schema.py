@@ -82,7 +82,6 @@ class DeleteSale(graphene.Mutation):
 
     def mutate(self, info, sale_id):
         sale = Sale.objects.get(id=sale_id)
-
         sale.delete()
 
         return DeleteSale(sale=sale)

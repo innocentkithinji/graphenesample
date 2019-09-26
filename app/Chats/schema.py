@@ -24,13 +24,14 @@ class AddChat(graphene.Mutation):
     class Arguments:
         BuyerId = graphene.Int(required=True)
         SellerId = graphene.Int(required=True)
+        SaleId = graphene.Int(required=True)
         DocId = graphene.String(required=True)
 
-    def mutate(self, info, BuyerId, SellerId, DocId):
+    def mutate(self, info, BuyerId, SellerId, DocId, SaleId):
         buyer = Buyer.objects.get(id=BuyerId)
         seller = Farm.objects.get(id=SellerId)
-
-        chat = Chat(partyA=buyer, partyB=seller, docId=DocId)
+        sale = Farm.objects.get(id=SaleId)
+        chat = Chat(partyA=buyer, partyB=seller, docId=DocId, sale=sale)
 
         chat.save()
 
