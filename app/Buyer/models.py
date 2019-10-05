@@ -10,7 +10,7 @@ class Buyer(models.Model):
     county = models.ForeignKey(County, on_delete=models.CASCADE)
     latitude = models.FloatField(blank=True)
     longitude = models.FloatField(blank=True)
-    package = models.ForeignKey(BuyerPackage, on_delete=models.SET_NULL, blank=True)
+    package = models.ForeignKey(BuyerPackage, on_delete=models.SET_NULL, blank=True, null=True)
     owner = models.ForeignKey(Member, on_delete=models.CASCADE, related_name='buyingProfile', )
     packages_buying_Date = models.DateTimeField(auto_now_add=True)
     account = models.CharField(max_length=20, blank=True, unique=True)
