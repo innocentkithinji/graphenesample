@@ -28,5 +28,5 @@ def mpesa_validation(request):
 def mpesa_confirmation(request):
     response = request.body
     recieved = json.loads(response)
-    print(recieved)
+    print(type(recieved))
     return HttpResponse(status=200)
