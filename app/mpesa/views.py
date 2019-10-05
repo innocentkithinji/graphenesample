@@ -8,6 +8,7 @@ import json
 from Buyer.models import Buyer
 from Farm.models import Farm
 from Labourers.models import Labourer
+from Packages.models import LabourersPackage, BuyerPackage, FarmPackage
 
 # Create your views here.
 @require_POST
@@ -38,7 +39,7 @@ def mpesa_confirmation(request):
     if ac == "BY":
         print("Buyer")
         buyer = Buyer.objects.get(account=recieved["BillRefNumber"])
-        print(buyer.name)
+        print(buyer.package)
     if ac == "FM":
         print("Farmer")
     if ac == "LR":
