@@ -56,7 +56,7 @@ def getValidAccount():
 
 
 class UpdateFarmAccounts(graphene.Mutation):
-    farms = graphene.List(FarmType)
+    farms = graphene.Field(FarmType)
 
     def mutate(self, info):
         farms = Farm.objects.all()
@@ -92,3 +92,4 @@ class UpdateFarm(graphene.Mutation):
 class Mutation(graphene.ObjectType):
     create_farm = CreateFarm.Field()
     update_farm = UpdateFarm.Field()
+    give_farm_accounts = UpdateFarmAccounts.Field()
