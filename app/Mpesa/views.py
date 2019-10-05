@@ -62,6 +62,8 @@ def mpesa_validation(request):
             labourer.active = True
         labourer.save()
 
+    return HttpResponse(status=200)
+
 
 @require_POST
 @csrf_exempt
