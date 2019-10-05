@@ -16,7 +16,7 @@ class Farm(models.Model):
     package = models.ForeignKey(FarmPackage, on_delete=models.SET_NULL, null=True)
     package_update_date = models.DateTimeField(auto_now_add=True)
     owner = models.ForeignKey(Member, on_delete=models.CASCADE, related_name="farms", blank=True)
-    account = models.CharField(max_length=20, blank=True, unique=True)
+    account = models.CharField(max_length=20, blank=True, null=True, unique=True)
     active = models.BooleanField(blank=False, null=False, default=False)
 
     def __str__(self):

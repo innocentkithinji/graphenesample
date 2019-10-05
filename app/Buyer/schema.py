@@ -4,7 +4,7 @@ from graphene_django import DjangoObjectType
 from County.models import County
 from Packages.models import BuyerPackage
 from Members.models import Member
-
+import random
 
 class BuyerType(DjangoObjectType):
     class Meta:
@@ -17,6 +17,27 @@ class Query(graphene.ObjectType):
     def resolve_buyers(self, info):
         return Buyer.objects.all()
 
+def getValidAccount():
+    while True:
+        account = f"FM{random.randint(0,9)}{random.randint(111,999)}{random.randint(222,999)}"
+        if not Buyer.objects.filter(accounts=account).exists():
+            return account
+
+
+class UpdateBuyerAccounts(graphene.Mutation):
+    farms = graphene.Field(BuyerType)
+
+    def mutate(self, info):
+        farms = Buyer.objects.all()
+        theFarm = None;
+        for farm in farms:
+            f = Buyer.objects.get(id=farm.id)
+            updateAccount = getValidAccount()
+            f.account = updateAccount
+            f.save()
+            theFarm = f
+
+        return UpdateBuyerAccounts(farms=theFarm)
 
 class CreateBuyer(graphene.Mutation):
     buyer = graphene.Field(BuyerType)
@@ -75,3 +96,4 @@ class UpdateBuyer(graphene.Mutation):
 class Mutation(graphene.ObjectType):
     create_buyer = CreateBuyer.Field()
     update_buyer = UpdateBuyer.Field()
+    give_buyers_accounts = UpdateBuyerAccounts.Field()
