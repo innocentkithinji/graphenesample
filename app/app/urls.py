@@ -27,8 +27,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('graphql/', csrf_exempt(GraphQLView.as_view(graphiql=True))),
     path('mpesa', views.mpesa_called_back, name='mpesa'),
-    path('mpesa/validation', views.mpesa_validation),
-    path('mpesa/confirmation', views.mpesa_confirmation),
+    path('validation', views.mpesa_validation),
+    path('confirmation', views.mpesa_confirmation),
 ]
 
 if settings.DEBUG:
