@@ -1,3 +1,5 @@
+from ast import literal_eval
+
 from django.shortcuts import render
 from django.views.decorators.http import require_POST
 from django.views.decorators.csrf import csrf_exempt
@@ -26,5 +28,5 @@ def mpesa_validation(request):
 def mpesa_confirmation(request):
     response = request.body
     print(response)
-    print(response.json)
+    print(literal_eval(response.decode('utf8')))
     return HttpResponse(status=200)
