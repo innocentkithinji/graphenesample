@@ -5,6 +5,9 @@ from django.views.decorators.http import require_POST
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 import json
+from Buyer.models import Buyer
+from Farm.models import Farm
+from Labourers.models import Labourer
 
 # Create your views here.
 @require_POST
@@ -34,6 +37,8 @@ def mpesa_confirmation(request):
     ac = recieved["BillRefNumber"][:2]
     if ac == "BY":
         print("Buyer")
+        buyer = Buyer.objects.get(account=recieved["BillRefNumber"])
+        print(buyer.name)
     if ac == "FM":
         print("Farmer")
     if ac == "LR":
