@@ -20,7 +20,7 @@ class Query(graphene.ObjectType):
 def getValidAccount():
     while True:
         account = f"FM{random.randint(0,9)}{random.randint(111,999)}{random.randint(222,999)}"
-        if not Buyer.objects.filter(accounts=account).exists():
+        if not Buyer.objects.filter(account=account).exists():
             return account
 
 
