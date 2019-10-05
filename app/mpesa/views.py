@@ -1,14 +1,14 @@
-from ast import literal_eval
-
-from django.shortcuts import render
-from django.views.decorators.http import require_POST
-from django.views.decorators.csrf import csrf_exempt
-from django.http import HttpResponse
 import json
+
 from Buyer.models import Buyer
 from Farm.models import Farm
 from Labourers.models import Labourer
-from Packages.models import LabourersPackage, BuyerPackage, FarmPackage
+from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_POST
+
+from .models import paymentMade
+
 
 # Create your views here.
 @require_POST
@@ -36,12 +36,35 @@ def mpesa_confirmation(request):
     #  'BusinessShortCode': '600755', 'BillRefNumber': 'BY6543211', 'InvoiceNumber': '', 'OrgAccountBalance': '',
     #  'ThirdPartyTransID': '', 'MSISDN': '254708374149', 'FirstName': 'John', 'MiddleName': 'J.', 'LastName': 'Doe'}
     ac = recieved["BillRefNumber"][:2]
+    pay = paymentMade()
+    pay.transactionID = recieved["TransID"]
+    pay.time = recieved["TransTime"]
+    pay.transAmount = recieved["TransAmount"]
+    pay.accountRef = recieved["BillRefNumber"]
+    pay.phone = recieved["MSISDN"]
+    pay.payer = f"{recieved['FirstName']} {recieved['Doe']}"
+
+    pay.save()
+
     if ac == "BY":
         print("Buyer")
         buyer = Buyer.objects.get(account=recieved["BillRefNumber"])
-        print(buyer.package.price)
+        if int(float(recieved["TransAmount"])) >= buyer.package.price:
+            buyer.active = True
+        buyer.save()
+
     if ac == "FM":
         print("Farmer")
+        farm = Farm.objects.get(account=recieved["BillRefNumber"])
+        if int(float(recieved["TransAmount"])) >= farm.package.price:
+            farm.active = True
+        farm.save()
+
     if ac == "LR":
         print("Labourer")
+        labourer = Labourer.objects.get(account=recieved["BillRefNumber"])
+        if int(float(recieved["TransAmount"])) >= labourer.package.price:
+            labourer.active = True
+        labourer.save()
+
     return HttpResponse(status=200)
