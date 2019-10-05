@@ -28,5 +28,5 @@ def mpesa_validation(request):
 def mpesa_confirmation(request):
     response = request.body
     print(response)
-    print(literal_eval(response.decode('utf8')))
+    print(response.decode('utf8'))
     return HttpResponse(status=200)
