@@ -4,7 +4,7 @@ import requests
 from django.db.models import Q
 from requests.auth import HTTPBasicAuth
 
-from mpesa import keys
+from Mpesa import keys
 from .models import payRequest
 import graphene
 from graphene_django import DjangoObjectType
