@@ -29,5 +29,5 @@ def mpesa_confirmation(request):
     response = request.body
     print(response)
     decoded_resp = response.decode('utf8')
-    literal_eval(str(decoded_resp))
+    print(decoded_resp["BusinessShortCode"])
     return HttpResponse(status=200)
