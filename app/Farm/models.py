@@ -9,11 +9,11 @@ import random
 # Create your models here.
 
 def uniqueacoount():
-    account = f"FM{random.randint(1, 9)}{random.randint(111, 999)}{random.randint(111, 888)}"
-    Query = Farm.objects.get(accounts=account)
-    if Query.len() == 0:
-        uniqueacoount()
-    return account
+    while True:
+        account = f"FM{random.randint(1, 9)}{random.randint(111, 999)}{random.randint(111, 888)}"
+        query = Farm.objects.filter(accounts=account).exists()
+        if not query:
+            return account
 
 
 class Farm(models.Model):
