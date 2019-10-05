@@ -27,7 +27,6 @@ def mpesa_validation(request):
 @csrf_exempt
 def mpesa_confirmation(request):
     response = request.body
-    print(response)
+    print(request.text)
     decoded_resp = response.decode('utf8')
-    print(decoded_resp["BusinessShortCode"])
     return HttpResponse(status=200)
