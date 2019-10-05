@@ -41,7 +41,7 @@ class CreateFarm(graphene.Mutation):
         farm.package = package
         farm.owner = owner
         farm.Ward = ward
-        farm.valid = True
+        farm.account = getValidAccount()
 
         farm.save()
 
@@ -82,7 +82,6 @@ class UpdateFarm(graphene.Mutation):
     def mutate(self, info, farm_id, name, package_id, package_update_date):
         farm = Farm.objects.get(id=farm_id)
         package = FarmPackage.objects.get(id=package_id)
-
         farm.name = name
         farm.package = package
         farm.package_update_date = package_update_date
