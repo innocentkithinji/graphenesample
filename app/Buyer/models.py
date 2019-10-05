@@ -13,7 +13,7 @@ class Buyer(models.Model):
     package = models.ForeignKey(BuyerPackage, on_delete=models.SET_NULL, blank=True, null=True)
     owner = models.ForeignKey(Member, on_delete=models.CASCADE, related_name='buyingProfile', )
     packages_buying_Date = models.DateTimeField(auto_now_add=True)
-    account = models.CharField(max_length=20, blank=True, unique=True)
+    account = models.CharField(max_length=20, blank=True, unique=True, null=True)
     active = models.BooleanField(default=False)
 
     def __str__(self):
