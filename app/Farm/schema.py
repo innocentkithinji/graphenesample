@@ -64,7 +64,7 @@ class UpdateFarmAccounts(graphene.Mutation):
         for farm in farms:
             f = Farm.objects.get(id=farm.id)
             updateAccount = getValidAccount()
-            f.account = updateAccount
+            f.accounts = updateAccount
             f.save()
             theFarm = f
 
