@@ -5,6 +5,7 @@ from County.models import County
 from Packages.models import FarmPackage
 from Members.models import Member
 from Wards.models import Ward
+import random
 
 class FarmType(DjangoObjectType):
     class Meta:
@@ -46,6 +47,25 @@ class CreateFarm(graphene.Mutation):
 
         return CreateFarm(farm=farm)
 
+
+def getValidAccount():
+    while True:
+        account = f"FM{random.randint(0,9)}{random.randint(80,999)}{random.randint(50,999)}"
+        if not Farm.objects.filter(accounts=account).exists():
+            return account
+
+
+class UpdateFarmAccounts(graphene.Mutation):
+    farms = graphene.List(FarmType)
+
+    def mutate(self, info):
+        farms = Farm.objects.all()
+        
+        for farm in farms:
+            farm.account = getValidAccount()
+            farm.save()
+
+        return UpdateFarmAccounts(farms=farms)
 
 class UpdateFarm(graphene.Mutation):
     farm = graphene.Field(FarmType)
