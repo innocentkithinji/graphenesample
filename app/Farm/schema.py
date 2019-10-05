@@ -60,12 +60,13 @@ class UpdateFarmAccounts(graphene.Mutation):
 
     def mutate(self, info):
         farms = Farm.objects.all()
-        
+        theFarm = None;
         for farm in farms:
             farm.account = getValidAccount()
             farm.save()
+            theFarm = farm
 
-        return UpdateFarmAccounts(farms=farms)
+        return UpdateFarmAccounts(farms=theFarm)
 
 class UpdateFarm(graphene.Mutation):
     farm = graphene.Field(FarmType)
