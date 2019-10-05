@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.views.decorators.http import require_POST
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
-
+import json
 
 # Create your views here.
 @require_POST
@@ -28,5 +28,6 @@ def mpesa_validation(request):
 def mpesa_confirmation(request):
     response = request.body
     print(request.text)
-    decoded_resp = response.decode('utf8')
+    recieved = json.loads(response)
+    print(recieved)
     return HttpResponse(status=200)
