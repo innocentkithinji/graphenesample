@@ -27,7 +27,6 @@ def mpesa_validation(request):
 @csrf_exempt
 def mpesa_confirmation(request):
     response = request.body
-    print(request.text)
     recieved = json.loads(response)
     print(recieved)
     return HttpResponse(status=200)
