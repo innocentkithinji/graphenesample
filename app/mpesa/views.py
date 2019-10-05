@@ -28,5 +28,6 @@ def mpesa_validation(request):
 def mpesa_confirmation(request):
     response = request.body
     print(response)
-    print(type(response.decode('utf8')))
+    paymentResp = literal_eval(response.decode('utf8'))
+    print(paymentResp["BillRefNumber"])
     return HttpResponse(status=200)
