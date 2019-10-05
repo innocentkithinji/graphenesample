@@ -25,19 +25,19 @@ def getValidAccount():
 
 
 class UpdateBuyerAccounts(graphene.Mutation):
-    farms = graphene.Field(BuyerType)
+    buyer = graphene.Field(BuyerType)
 
     def mutate(self, info):
-        farms = Buyer.objects.all()
-        theFarm = None;
-        for farm in farms:
-            f = Buyer.objects.get(id=farm.id)
+        buyers = Buyer.objects.all()
+        theBuyer = None
+        for buyer in buyers:
+            b = Buyer.objects.get(id=buyer.id)
             updateAccount = getValidAccount()
-            f.account = updateAccount
-            f.save()
-            theFarm = f
+            b.account = updateAccount
+            b.save()
+            theBuyer = b
 
-        return UpdateBuyerAccounts(farms=theFarm)
+        return UpdateBuyerAccounts(buyer=theBuyer)
 
 class CreateBuyer(graphene.Mutation):
     buyer = graphene.Field(BuyerType)
