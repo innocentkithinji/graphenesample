@@ -8,13 +8,6 @@ import random
 
 # Create your models here.
 
-def uniqueacoount():
-    while True:
-        account = f"FM{random.randint(1, 9)}{random.randint(111, 999)}{random.randint(111, 888)}"
-        query = Farm.objects.filter(accounts=account).exists()
-        if not query:
-            return account
-
 
 class Farm(models.Model):
     name = models.CharField(max_length=50)
@@ -23,7 +16,7 @@ class Farm(models.Model):
     package = models.ForeignKey(FarmPackage, on_delete=models.SET_NULL, null=True)
     package_update_date = models.DateTimeField(auto_now_add=True)
     owner = models.ForeignKey(Member, on_delete=models.CASCADE, related_name="farms", blank=True)
-    accounts = models.CharField(max_length=20, blank=True, null=True, unique=True)
+    account = models.CharField(max_length=20, blank=True, unique=True)
     active = models.BooleanField(blank=False, null=False, default=False)
 
     def __str__(self):
