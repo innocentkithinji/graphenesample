@@ -55,7 +55,7 @@ INSTALLED_APPS = [
     'Chats',
     'Agent',
     'Labourers',
-    'mpesa',
+    'Mpesa',
     'Prices'
 ]
 

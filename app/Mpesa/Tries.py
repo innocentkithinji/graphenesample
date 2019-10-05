@@ -1,7 +1,7 @@
 import requests
 from requests.auth import HTTPBasicAuth
 
-from app.mpesa import keys
+from app.Mpesa import keys
 
 
 def getAuthToken():
