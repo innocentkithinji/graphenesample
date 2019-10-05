@@ -24,9 +24,12 @@ from django.views.decorators.csrf import csrf_exempt
 from  mpesa import views
 
 urlpatterns = [
+    path('/', admin.site.urls),
     path('admin/', admin.site.urls),
     path('graphql/', csrf_exempt(GraphQLView.as_view(graphiql=True))),
-    path('mpesa', views.mpesa_called_back, name='mpesa')
+    path('mpesa', views.mpesa_called_back, name='mpesa'),
+    path('mpesa/validation', views.mpesa_validation),
+    path('mpesa/confirmation', views.mpesa_confirmation),
 ]
 
 if settings.DEBUG:

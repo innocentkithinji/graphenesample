@@ -11,3 +11,19 @@ def mpesa_called_back(request):
     response = request.body
     print(response)
     return HttpResponse(status=200)
+
+
+@require_POST
+@csrf_exempt
+def mpesa_validation(request):
+    response = request.body
+    print(response)
+    return HttpResponse(status=200)
+
+
+@require_POST
+@csrf_exempt
+def mpesa_confirmation(request):
+    response = request.body
+    print(response)
+    return HttpResponse(status=200)
