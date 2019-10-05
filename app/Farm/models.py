@@ -14,7 +14,7 @@ class Farm(models.Model):
     package_update_date = models.DateTimeField(auto_now_add=True)
     valid = models.BooleanField(True)
     owner = models.ForeignKey(Member, on_delete=models.CASCADE, related_name="farms", blank=True)
-    accounts = models.CharField(max_length=20, blank=False, null=False, unique=True, default=f"FM{random.randint(999,9999999)}")
+    accounts = models.CharField(max_length=20, blank=False, null=False, unique=True, default=f"FM{random.randint(1,9)}{random.randint(111,999)}{random.randint(111,888)}")
 
     def __str__(self):
         return self.name
