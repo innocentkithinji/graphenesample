@@ -39,7 +39,7 @@ def mpesa_confirmation(request):
     pay = paymentMade()
     pay.transactionID = recieved["TransID"]
     pay.time = recieved["TransTime"]
-    pay.transAmount = recieved["TransAmount"]
+    pay.transAmount = int(float(recieved["TransAmount"]))
     pay.accountRef = recieved["BillRefNumber"]
     pay.phone = recieved["MSISDN"]
     pay.payer = f"{recieved['FirstName']} {recieved['LastName']}"
@@ -50,7 +50,10 @@ def mpesa_confirmation(request):
         print("Buyer")
         buyer = Buyer.objects.get(account=recieved["BillRefNumber"])
         if int(float(recieved["TransAmount"])) >= buyer.package.price:
+            print("Conf")
             buyer.active = True
+        else:
+            print("None")
         buyer.save()
 
     if ac == "FM":
