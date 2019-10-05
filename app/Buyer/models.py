@@ -2,6 +2,7 @@ from django.db import models
 from County.models import County
 from Packages.models import BuyerPackage
 from Members.models import Member
+import random
 
 
 # Create your models here.
@@ -13,7 +14,8 @@ class Buyer(models.Model):
     package = models.ForeignKey(BuyerPackage, on_delete=models.SET_NULL, blank=True, null=True)
     owner = models.ForeignKey(Member, on_delete=models.CASCADE, related_name='buyingProfile', )
     packages_buying_Date = models.DateTimeField(auto_now_add=True)
-    account = models.CharField(max_length=20, blank=True, unique=True, null=True)
+    account = models.CharField(max_length=20, blank=True, unique=True, null=True,
+                               default=f"BY{random.randint(1, 999999)}")
     active = models.BooleanField(default=False)
 
     def __str__(self):

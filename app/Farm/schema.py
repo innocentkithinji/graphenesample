@@ -51,7 +51,7 @@ class CreateFarm(graphene.Mutation):
 def getValidAccount():
     while True:
         account = f"FM{random.randint(0,9)}{random.randint(80,999)}{random.randint(50,999)}"
-        if not Farm.objects.filter(accounts=account).exists():
+        if not Farm.objects.filter(account=account).exists():
             return account
 
 

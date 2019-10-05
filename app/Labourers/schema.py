@@ -23,6 +23,13 @@ class Query(graphene.ObjectType):
         return labourers
 
 
+def getValidAccount():
+    while True:
+        account = f"LR{random.randint(0, 9)}{random.randint(80, 999)}{random.randint(50, 999)}"
+        if not Labourer.objects.filter(account=account).exists():
+            return account
+
+
 class createLabourer(graphene.Mutation):
     labourer = graphene.Field(LabourerType)
 
@@ -32,16 +39,6 @@ class createLabourer(graphene.Mutation):
         services = graphene.List(required=True, of_type=graphene.Int)
         owner = graphene.Int(required=True)
         packageId = graphene.Int(required=True)
-
-
-    def genRandomUniqueCode(self):
-        x = f"LR{random.randint(1, 999999)}"
-        print(x)
-        ag = Labourer.objects.get(account=x)
-        if ag:
-            return self.genRandomUniqueCode
-        else:
-            return x
 
     def mutate(self, info, name, ward, services, owner, packageId):
         labourer = Labourer(name=name)
@@ -57,11 +54,10 @@ class createLabourer(graphene.Mutation):
         labourer.ward = ward
         labourer.owner = owner
         labourer.package = package
-        labourer.account = f"LR{random.randint(1, 999999)}"
+        labourer.account = getValidAccount()
         labourer.save()
         labourer.services.set(LServices)
         labourer.save()
-
 
         return createLabourer(labourer=labourer)
 

@@ -15,6 +15,8 @@ class Labourer(models.Model):
     services = models.ManyToManyField(LabourService, related_name="LabourProvider")
     packages_buying_Date = models.DateTimeField(auto_now_add=True)
     account = models.CharField(max_length=30, unique=True, default=f"LR{random.randint(1, 999999)}")
+    active = models.BooleanField(default=False)
+
 
     def __str__(self):
         return self.name
