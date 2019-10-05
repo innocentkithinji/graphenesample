@@ -39,7 +39,7 @@ def mpesa_confirmation(request):
     if ac == "BY":
         print("Buyer")
         buyer = Buyer.objects.get(account=recieved["BillRefNumber"])
-        print(buyer.package.id)
+        print(buyer.package.price)
     if ac == "FM":
         print("Farmer")
     if ac == "LR":
