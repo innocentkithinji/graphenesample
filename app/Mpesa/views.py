@@ -42,7 +42,7 @@ def mpesa_confirmation(request):
     pay.transAmount = recieved["TransAmount"]
     pay.accountRef = recieved["BillRefNumber"]
     pay.phone = recieved["MSISDN"]
-    pay.payer = f"{recieved['FirstName']} {recieved['Doe']}"
+    pay.payer = f"{recieved['FirstName']} {recieved['LastName']}"
 
     pay.save()
 
