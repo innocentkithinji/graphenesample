@@ -20,6 +20,7 @@ from django.urls import path
 from django.conf import settings
 from django.views.static import serve
 from graphene_django.views import GraphQLView
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.views.decorators.csrf import csrf_exempt
 from  Mpesa import views
 
@@ -30,6 +31,9 @@ urlpatterns = [
     path('validation', views.mpesa_validation),
     path('confirmation', views.mpesa_confirmation),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += staticfiles_urlpatterns()
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

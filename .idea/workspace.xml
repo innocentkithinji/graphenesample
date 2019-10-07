@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d7eb1dc5-a380-4d49-8baa-14ad947c8c1e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="d7eb1dc5-a380-4d49-8baa-14ad947c8c1e" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +68,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/app/settings.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="499">
@@ -97,11 +95,14 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/app/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="23" column="6" selection-start-line="23" selection-start-column="6" selection-end-line="23" selection-end-column="6" />
+            <state relative-caret-position="341">
+              <caret line="24" column="24" lean-forward="true" selection-start-line="24" selection-start-column="24" selection-end-line="24" selection-end-column="24" />
+              <folding>
+                <element signature="e#627#669#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -199,17 +200,17 @@
         <option value="$PROJECT_DIR$/app/mpesa/admin.py" />
         <option value="$PROJECT_DIR$/app/mpesa/views.py" />
         <option value="$PROJECT_DIR$/app/mpesa/apps.py" />
-        <option value="$PROJECT_DIR$/app/app/urls.py" />
         <option value="$PROJECT_DIR$/app/Mpesa/schema.py" />
         <option value="$PROJECT_DIR$/app/app/schema.py" />
         <option value="$PROJECT_DIR$/app/Mpesa/views.py" />
         <option value="$PROJECT_DIR$/app/app/settings.py" />
+        <option value="$PROJECT_DIR$/app/app/urls.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1032" />
-    <option name="y" value="15" />
+    <option name="x" value="787" />
+    <option name="y" value="54" />
     <option name="width" value="974" />
     <option name="height" value="1057" />
   </component>
@@ -360,15 +361,15 @@
       <workItem from="1569813292426" duration="2090000" />
       <workItem from="1569954707733" duration="4516000" />
       <workItem from="1569995952636" duration="314000" />
-      <workItem from="1570458042984" duration="963000" />
+      <workItem from="1570458042984" duration="1345000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="212853000" />
+    <option name="totallyTimeSpent" value="213235000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1032" y="15" width="974" height="1057" extended-state="0" />
+    <frame x="787" y="54" width="974" height="1057" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.35776806" />
@@ -820,13 +821,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/app/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="6" selection-start-line="23" selection-start-column="6" selection-end-line="23" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Labourers/schema.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -851,6 +845,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="499">
           <caret line="154" column="49" selection-start-line="154" selection-start-column="49" selection-end-line="154" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/app/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="341">
+          <caret line="24" column="24" lean-forward="true" selection-start-line="24" selection-start-column="24" selection-end-line="24" selection-end-column="24" />
+          <folding>
+            <element signature="e#627#669#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
