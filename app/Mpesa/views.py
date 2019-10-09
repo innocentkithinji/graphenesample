@@ -3,7 +3,7 @@ import json
 from Buyer.models import Buyer
 from Farm.models import Farm
 from Labourers.models import Labourer
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 
@@ -110,3 +110,7 @@ def mpesa_confirmation(request):
         labourer.save()
 
     return HttpResponse(status=200)
+
+
+def redirectTo(request):
+    return HttpResponseRedirect("https://hayvest.com")
