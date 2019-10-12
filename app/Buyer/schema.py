@@ -75,13 +75,13 @@ class UpdateBuyer(graphene.Mutation):
         buyer_id = graphene.Int(required=True)
         name = graphene.String()
         package_id = graphene.Int()
-        package_update_date = graphene.DateTime()
 
     def mutate(self, info, buyer_id,  package_id, name=None):
         buyer = Buyer.objects.get(id=buyer_id)
         package = BuyerPackage.objects.get(id=package_id)
 
-        buyer.name = name
+        if name:
+            buyer.name = name
         buyer.package = package
         buyer.package_update_date = datetime.datetime.now()
         buyer.active = False
