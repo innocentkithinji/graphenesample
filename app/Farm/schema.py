@@ -1,4 +1,5 @@
 import random
+from datetime import datetime
 
 import graphene
 from County.models import County
@@ -6,8 +7,6 @@ from Members.models import Member
 from Packages.models import FarmPackage
 from Wards.models import Ward
 from graphene_django import DjangoObjectType
-
-from datetime import datetime
 
 from .models import Farm
 
@@ -87,10 +86,11 @@ class UpdateFarm(graphene.Mutation):
         package_id = graphene.Int()
         active = graphene.Boolean()
 
-    def mutate(self, info, farm_id, name, package_id, active):
+    def mutate(self, info, farm_id, package_id, active, name=None):
         farm = Farm.objects.get(id=farm_id)
         package = FarmPackage.objects.get(id=package_id)
-        farm.name = name
+        if name:
+            farm.name = name
         farm.package = package
         farm.active = active
         farm.package_update_date = datetime.now()
