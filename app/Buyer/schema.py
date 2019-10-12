@@ -89,6 +89,7 @@ class UpdateBuyer(graphene.Mutation):
         buyer.county = county
         buyer.longitude = longitude
         buyer.latitude = latitude
+        buyer.active = False
         buyer.save()
 
         return UpdateBuyer(buyer=buyer)
