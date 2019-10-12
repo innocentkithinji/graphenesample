@@ -83,12 +83,14 @@ class UpdateFarm(graphene.Mutation):
         farm_id = graphene.Int(required=True)
         name = graphene.String()
         package_id = graphene.Int()
+        active = graphene.Boolean()
 
-    def mutate(self, info, farm_id, name, package_id):
+    def mutate(self, info, farm_id, name, package_id, active):
         farm = Farm.objects.get(id=farm_id)
         package = FarmPackage.objects.get(id=package_id)
         farm.name = name
         farm.package = package
+        farm.active = active
         farm.package_update_date = datetime.now()
 
         farm.save()
