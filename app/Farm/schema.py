@@ -47,6 +47,8 @@ class CreateFarm(graphene.Mutation):
         farm.owner = owner
         farm.Ward = ward
         farm.account = getValidAccount()
+        if package.id == 5:
+            farm.active = True
 
         farm.save()
 
