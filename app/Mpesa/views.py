@@ -1,4 +1,5 @@
 import json
+from datetime import datetime
 
 from Buyer.models import Buyer
 from Farm.models import Farm
@@ -90,6 +91,7 @@ def mpesa_confirmation(request):
         buyer = Buyer.objects.get(account=recieved["BillRefNumber"])
         if int(float(recieved["TransAmount"])) >= buyer.package.price:
             print("Conf")
+            buyer.packages_buying_Date = datetime.now()
             buyer.active = True
         else:
             print("None")
@@ -99,6 +101,7 @@ def mpesa_confirmation(request):
         print("Farmer")
         farm = Farm.objects.get(account=recieved["BillRefNumber"])
         if int(float(recieved["TransAmount"])) >= farm.package.price:
+            farm.package_update_date = datetime.now()
             farm.active = True
         farm.save()
 
@@ -106,6 +109,7 @@ def mpesa_confirmation(request):
         print("Labourer")
         labourer = Labourer.objects.get(account=recieved["BillRefNumber"])
         if int(float(recieved["TransAmount"])) >= labourer.package.price:
+            labourer.packages_buying_Date = datetime.now()
             labourer.active = True
         labourer.save()
 

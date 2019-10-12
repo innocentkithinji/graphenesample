@@ -1,11 +1,16 @@
-from .models import Farm
-import graphene
-from graphene_django import DjangoObjectType
-from County.models import County
-from Packages.models import FarmPackage
-from Members.models import Member
-from Wards.models import Ward
 import random
+
+import graphene
+from County.models import County
+from Members.models import Member
+from Packages.models import FarmPackage
+from Wards.models import Ward
+from graphene_django import DjangoObjectType
+
+from datetime import datetime
+
+from .models import Farm
+
 
 class FarmType(DjangoObjectType):
     class Meta:
@@ -50,7 +55,7 @@ class CreateFarm(graphene.Mutation):
 
 def getValidAccount():
     while True:
-        account = f"FM{random.randint(0,9)}{random.randint(80,999)}{random.randint(50,999)}"
+        account = f"FM{random.randint(0, 9)}{random.randint(80, 999)}{random.randint(50, 999)}"
         if not Farm.objects.filter(account=account).exists():
             return account
 
@@ -70,6 +75,7 @@ class UpdateFarmAccounts(graphene.Mutation):
 
         return UpdateFarmAccounts(farms=theFarm)
 
+
 class UpdateFarm(graphene.Mutation):
     farm = graphene.Field(FarmType)
 
@@ -77,14 +83,13 @@ class UpdateFarm(graphene.Mutation):
         farm_id = graphene.Int(required=True)
         name = graphene.String()
         package_id = graphene.Int()
-        package_update_date = graphene.DateTime()
 
-    def mutate(self, info, farm_id, name, package_id, package_update_date):
+    def mutate(self, info, farm_id, name, package_id):
         farm = Farm.objects.get(id=farm_id)
         package = FarmPackage.objects.get(id=package_id)
         farm.name = name
         farm.package = package
-        farm.package_update_date = package_update_date
+        farm.package_update_date = datetime.now()
 
         farm.save()
 
