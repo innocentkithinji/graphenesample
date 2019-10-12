@@ -1,3 +1,5 @@
+import datetime
+
 from .models import Buyer
 import graphene
 from graphene_django import DjangoObjectType
@@ -72,23 +74,16 @@ class UpdateBuyer(graphene.Mutation):
     class Arguments:
         buyer_id = graphene.Int(required=True)
         name = graphene.String()
-        county_id = graphene.Int()
         package_id = graphene.Int()
-        latitude = graphene.Float()
-        longitude = graphene.Float()
         package_update_date = graphene.DateTime()
 
-    def mutate(self, info, buyer_id, name, county_id, latitude, longitude, package_id, package_update_date):
+    def mutate(self, info, buyer_id,  package_id, name=None):
         buyer = Buyer.objects.get(id=buyer_id)
         package = BuyerPackage.objects.get(id=package_id)
-        county = County.objects.get(id=county_id)
 
         buyer.name = name
         buyer.package = package
-        buyer.package_update_date = package_update_date
-        buyer.county = county
-        buyer.longitude = longitude
-        buyer.latitude = latitude
+        buyer.package_update_date = datetime.datetime.now()
         buyer.active = False
         buyer.save()
 
