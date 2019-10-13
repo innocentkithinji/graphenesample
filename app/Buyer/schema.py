@@ -1,12 +1,14 @@
 import datetime
+import random
+
+import graphene
+from County.models import County
+from Members.models import Member
+from Packages.models import BuyerPackage
+from graphene_django import DjangoObjectType
 
 from .models import Buyer
-import graphene
-from graphene_django import DjangoObjectType
-from County.models import County
-from Packages.models import BuyerPackage
-from Members.models import Member
-import random
+
 
 class BuyerType(DjangoObjectType):
     class Meta:
@@ -19,9 +21,10 @@ class Query(graphene.ObjectType):
     def resolve_buyers(self, info):
         return Buyer.objects.all()
 
+
 def getValidAccount():
     while True:
-        account = f"BY{random.randint(0,9)}{random.randint(111,999)}{random.randint(222,999)}"
+        account = f"BY{random.randint(0, 9)}{random.randint(111, 999)}{random.randint(222, 999)}"
         if not Buyer.objects.filter(account=account).exists():
             return account
 
@@ -40,6 +43,7 @@ class UpdateBuyerAccounts(graphene.Mutation):
             theBuyer = b
 
         return UpdateBuyerAccounts(buyer=theBuyer)
+
 
 class CreateBuyer(graphene.Mutation):
     buyer = graphene.Field(BuyerType)
@@ -60,6 +64,8 @@ class CreateBuyer(graphene.Mutation):
         buyer = Buyer(name=name, latitude=latitude, longitude=longitude)
         buyer.owner = owner
         buyer.county = county
+        if package_id == 1:
+            buyer.active = True
         buyer.package = package
         buyer.account = getValidAccount()
 
@@ -76,7 +82,7 @@ class UpdateBuyer(graphene.Mutation):
         name = graphene.String()
         package_id = graphene.Int()
 
-    def mutate(self, info, buyer_id,  package_id, name=None):
+    def mutate(self, info, buyer_id, package_id, name=None):
         buyer = Buyer.objects.get(id=buyer_id)
         package = BuyerPackage.objects.get(id=package_id)
 

@@ -53,6 +53,8 @@ class createLabourer(graphene.Mutation):
 
         labourer.ward = ward
         labourer.owner = owner
+        if packageId == 1:
+            labourer.active = True;
         labourer.package = package
         labourer.account = getValidAccount()
         labourer.save()
