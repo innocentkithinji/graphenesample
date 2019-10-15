@@ -83,6 +83,7 @@ class UpdateLabourer(graphene.Mutation):
 
         labourer.services.set(l_services)
         labourer.package = package
+        labourer.active = False
 
         labourer.save()
         return UpdateLabourer(labourer=labourer)
