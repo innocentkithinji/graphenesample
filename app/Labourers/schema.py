@@ -69,7 +69,6 @@ class UpdateLabourer(graphene.Mutation):
     labourer = graphene.Field(LabourerType)
 
     class Arguments:
-        ward = graphene.Int(required=True)
         labourerId = graphene.Int(required=True)
         packageId = graphene.Int(required=True)
         services = graphene.List(required=True, of_type=graphene.Int)
