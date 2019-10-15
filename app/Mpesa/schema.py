@@ -33,7 +33,6 @@ class createPayRequest(graphene.Mutation):
 
     def mutate(self, info, phone, acc, amount):
         payReq = payRequest(phone=phone, amount=amount, account=acc)
-
         auth_URL = "https://api.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials"
         r = requests.get(auth_URL, auth=HTTPBasicAuth(keys.consumer_key, keys.consumer_secret))
         response = r.json()
@@ -58,17 +57,18 @@ class createPayRequest(graphene.Mutation):
             "PartyA": phone,
             "PartyB": keys.business_short_code,
             "PhoneNumber": phone,
-            "CallBackURL": "https://89eade11.ngrok.io/coin/confirm",
+            "CallBackURL": "https://payment.hayvest.co.ke/stkcallback",
             "AccountReference":acc,
             "TransactionDesc": "Simple Test"
         }
 
         response = requests.post(stk_api_url, json=request, headers=headers)
         final_response = response.json()
-
         print(final_response)
+
         if 'CheckoutRequestID' in final_response:
             payReq.posted = True
+            payReq.checkOutID = final_response["CheckoutRequestID"]
         else:
             payReq.posted = False
 

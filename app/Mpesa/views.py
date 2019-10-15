@@ -8,7 +8,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 
-from .models import paymentMade
+from .models import paymentMade, payRequest
 
 
 # Create your views here.
@@ -16,7 +16,39 @@ from .models import paymentMade
 @csrf_exempt
 def mpesa_called_back(request):
     response = request.body
-    print(response)
+    result = json.loads(response)
+
+    ChecoutId = result["Body"]["stkCallback"]["CheckoutRequestID"]
+    trans = payRequest.objects.get(checkOutID= ChecoutId)
+    print(trans.account)
+    ac = trans.account[:2]
+    account = trans.account
+    amount = result["Body"]["stkCallback"]["CallbackMetadata"]["Item"][0]["Value"]
+    print(type(amount))
+    if ac == "BY":
+        print("Buyer")
+        buyer = Buyer.objects.get(  account=account)
+        if int(float(amount)) >= buyer.package.price:
+            print("Conf")
+            buyer.active = True
+        else:
+            print("None")
+        buyer.save()
+
+    if ac == "FM":
+        print("Farmer")
+        farm = Farm.objects.get(account=account)
+        if int(float(amount)) >= farm.package.price:
+            farm.active = True
+        farm.save()
+
+    if ac == "LR":
+        print("Labourer")
+        labourer = Labourer.objects.get(account=account)
+        if int(float(amount)) >= labourer.package.price:
+            labourer.active = True
+        labourer.save()
+
     return HttpResponse(status=200)
 
 
@@ -41,7 +73,7 @@ def mpesa_validation(request):
 
     if ac == "BY":
         print("Buyer")
-        buyer = Buyer.objects.get(account=recieved["BillRefNumber"])
+        buyer = Buyer.objects.get(  account=recieved["BillRefNumber"])
         if int(float(recieved["TransAmount"])) >= buyer.package.price:
             print("Conf")
             buyer.active = True

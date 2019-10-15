@@ -28,7 +28,7 @@ urlpatterns = [
     path('', views.redirectTo),
     path('admin/', admin.site.urls),
     path('graphql/', csrf_exempt(GraphQLView.as_view(graphiql=True))),
-    path('Mpesa', views.mpesa_called_back, name='Mpesa'),
+    path('stkcallback', views.mpesa_called_back, name='Mpesa'),
     path('validation', views.mpesa_validation),
     path('confirmation', views.mpesa_confirmation),
 ]

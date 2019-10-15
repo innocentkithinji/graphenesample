@@ -6,6 +6,7 @@ class payRequest(models.Model):
     phone = models.CharField(max_length=30)
     account = models.CharField(max_length=30)
     amount = models.CharField(max_length=40)
+    checkOutID = models.CharField(max_length=100, blank=True)
     posted = models.BooleanField()
 
 
