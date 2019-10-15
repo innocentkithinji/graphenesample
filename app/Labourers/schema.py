@@ -1,12 +1,13 @@
-from County.models import County
+import random
+
+import graphene
 from Labour.models import LabourService
+from Members.models import Member
 from Packages.models import LabourersPackage
 from Wards.models import Ward
-from Members.models import Member
-from .models import Labourer
-import graphene
 from graphene_django import DjangoObjectType
-import random
+
+from .models import Labourer
 
 
 class LabourerType(DjangoObjectType):
@@ -62,6 +63,27 @@ class createLabourer(graphene.Mutation):
         labourer.save()
 
         return createLabourer(labourer=labourer)
+
+
+class Update_Labourer(graphene.Mutation):
+    class Arguments:
+        ward = graphene.Int(required=True)
+        labourerId = graphene.Int(required=True)
+        packageId = graphene.Int(required=True)
+        services = graphene.List(required=True, of_type=graphene.Int)
+
+    def mutate(self, info, labourerId, packageId, services):
+        labourer = Labourer.objects.get(id=labourerId)
+        package = LabourersPackage.objects.get(id=packageId)
+        l_services = []
+        for Service in services:
+            service = LabourService.objects.get(id=Service)
+            l_services.append(service)
+
+        labourer.services.set(l_services)
+        labourer.package = package
+
+        labourer.save()
 
 
 class Mutation(graphene.ObjectType):
