@@ -65,7 +65,9 @@ class createLabourer(graphene.Mutation):
         return createLabourer(labourer=labourer)
 
 
-class Update_Labourer(graphene.Mutation):
+class UpdateLabourer(graphene.Mutation):
+    labourer = graphene.Field(LabourerType)
+
     class Arguments:
         ward = graphene.Int(required=True)
         labourerId = graphene.Int(required=True)
@@ -84,7 +86,9 @@ class Update_Labourer(graphene.Mutation):
         labourer.package = package
 
         labourer.save()
+        return UpdateLabourer(labourer=labourer)
 
 
 class Mutation(graphene.ObjectType):
     create_Labourer = createLabourer.Field()
+    update_Labourer = UpdateLabourer.Field()
