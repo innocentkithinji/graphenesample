@@ -2,7 +2,7 @@ from django.db import models
 from Packages.models import LabourersPackage
 from Wards.models import Ward
 from Members.models import Member
-from Labour.models import LabourService
+from app.Labour.models import LabourService
 import random
 
 
