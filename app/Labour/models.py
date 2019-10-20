@@ -1,8 +1,8 @@
-from django.db import models
-from Wards.models import Ward
-from Farm.models import Farm
 from Buyer.models import Buyer
-
+from Farm.models import Farm
+from Wards.models import Ward
+from django.db import models
+from Labourers.models import Labourer
 
 # Create your models here.
 
@@ -20,6 +20,7 @@ class PayPeriod(models.Model):
     def __str__(self):
         return self.name
 
+
 class LaboursRequest(models.Model):
     PERIOD_CHOICES = [('1', "Day"), ('2', "Week"), ('3', "Month")]
     ward = models.ForeignKey(Ward, related_name="labourServiceRequest", on_delete=models.CASCADE)
@@ -34,3 +35,9 @@ class LaboursRequest(models.Model):
 
     def __str__(self):
         return str(self.id)
+
+class LabourApplication(models.Model):
+    LaboursRequest = models.ForeignKey(LaboursRequest, related_name="labourApplication", on_delete=models.CASCADE)
+    Labourer = models.ForeignKey(Labourer, related_name="LabourerApplications", on_delete=models.CASCADE)
+    hired = models.BooleanField(default=False, null=False)
+    responded = models.BooleanField(default=False, null=False)

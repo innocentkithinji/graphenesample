@@ -1,13 +1,14 @@
 import datetime
 
-from django.db.models import Q
-from Wards.models import Ward
-
+import graphene
 from Buyer.models import Buyer
 from Farm.models import Farm
-from .models import LabourService, PayPeriod, LaboursRequest
-import graphene
+from Labourers.models import Labourer
+from Wards.models import Ward
+from django.db.models import Q
 from graphene_django import DjangoObjectType
+
+from .models import LabourService, PayPeriod, LaboursRequest, LabourApplication
 
 
 class LabourType(DjangoObjectType):
@@ -23,6 +24,11 @@ class LabourRequestType(DjangoObjectType):
 class PayPeriodsTypes(DjangoObjectType):
     class Meta:
         model = PayPeriod
+
+
+class LabourApplicationType(DjangoObjectType):
+    class Meta:
+        model = LabourApplication
 
 
 class Query(graphene.ObjectType):
@@ -102,5 +108,45 @@ class createLabourReq(graphene.Mutation):
         return createLabourReq(request=request)
 
 
+class makeApplication(graphene.Mutation):
+    application = graphene.Field(LabourApplicationType)
+
+    class Arguments:
+        LabourRequest = graphene.Int(required=True)
+        LabourerId = graphene.Int(required=True)
+
+    def mutate(self, info, LabourRequest, LabourerId):
+        LabourReq = LaboursRequest.objects.get(id=LabourRequest)
+        labourer = Labourer.objects.get(id=LabourerId)
+
+        application = LabourApplication()
+        application.Labourer = labourer
+        application.LaboursRequest = LabourReq
+        application.hired = False
+
+        application.save()
+
+        return makeApplication(application=application)
+
+
+class RespondApplication(graphene.Mutation):
+    application = graphene.Field(LabourApplicationType)
+
+    class Arguments:
+        LabourApply = graphene.Int(required=True)
+        hiring = graphene.Boolean(required=True)
+
+    def mutate(self, info, LabourApply, hiring):
+        application = LabourApplication.objects.get(id=LabourApply)
+        application.hired = hiring
+        application.responded = True
+
+        application.save()
+
+        return RespondApplication(application=application)
+
+
 class Mutation(graphene.ObjectType):
     create_Labour_Req = createLabourReq.Field()
+    make_Application = makeApplication.Field()
+    respond_to_Application = RespondApplication.Field()
