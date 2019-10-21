@@ -35,7 +35,7 @@ class Query(graphene.ObjectType):
     services = graphene.List(LabourType, name=graphene.String())
     labourRequests = graphene.List(LabourRequestType, ward=graphene.Int(), service=graphene.Int())
     payPeriod = graphene.List(PayPeriodsTypes)
-    applications = graphene.List(LabourApplicationType, RequestId=graphene.Int(requires=True))
+    applications = graphene.List(LabourApplicationType, RequestId=graphene.Int(required=True))
 
     def resolve_services(self, info, name=None):
         srv = LabourService.objects.all()
