@@ -1,12 +1,17 @@
+import base64
 import datetime
 import random
 
 import graphene
+import requests
 from County.models import County
 from Members.models import Member
 from Packages.models import BuyerPackage
 from graphene_django import DjangoObjectType
+from requests.auth import HTTPBasicAuth
 
+from app.Mpesa import keys
+from app.Mpesa.models import payRequest
 from .models import Buyer
 
 
@@ -94,6 +99,67 @@ class UpdateBuyer(graphene.Mutation):
         buyer.save()
 
         return UpdateBuyer(buyer=buyer)
+
+
+class UpgradeBuyer(graphene.Mutation):
+    buyer = graphene.Field(BuyerType)
+
+    class Arguments:
+        labourer_id = graphene.Int(required=True)
+        package_id = graphene.Int()
+        amount = graphene.Int()
+        phone = graphene.String()
+        acc = graphene.String()
+
+    def mutate(self, info, labourer_id, package_id, amount, phone, acc):
+        buyer = Buyer.objects.get(id=labourer_id)
+        package = BuyerPackage.objects.get(id=package_id)
+        buyer.package = package
+        buyer.active = False
+        buyer.save()
+
+        payReq = payRequest(phone=phone, amount=amount, account=acc)
+        auth_URL = "https://api.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials"
+        r = requests.get(auth_URL, auth=HTTPBasicAuth(keys.consumer_key, keys.consumer_secret))
+        response = r.json()
+        print(response)
+        access_token = response['access_token']
+
+        rawtime = datetime.now()
+        finishedtime = rawtime.strftime("%Y%m%d%H%M%S")
+        rawpass = "{}{}{}".format(keys.business_short_code, keys.passKey, finishedtime)
+        base64Pass = base64.b64encode(rawpass.encode())
+        passwd = base64Pass.decode()
+        phone = "254" + phone[1:]
+        stk_api_url = "https://api.safaricom.co.ke/mpesa/stkpush/v1/processrequest"
+        headers = {"Authorization": "Bearer %s" % access_token}
+        request = {
+            "BusinessShortCode": keys.business_short_code,
+            "Password": passwd,
+            "Timestamp": finishedtime,
+            "TransactionType": "CustomerPayBillOnline",
+            "Amount": amount,
+            "PartyA": phone,
+            "PartyB": keys.business_short_code,
+            "PhoneNumber": phone,
+            "CallBackURL": "https://payment.hayvest.co.ke/stkcallback",
+            "AccountReference": acc,
+            "TransactionDesc": "Simple Test"
+        }
+
+        response = requests.post(stk_api_url, json=request, headers=headers)
+        final_response = response.json()
+        print(final_response)
+
+        if 'CheckoutRequestID' in final_response:
+            payReq.posted = True
+            payReq.checkOutID = final_response["CheckoutRequestID"]
+        else:
+            payReq.posted = False
+
+        payReq.save()
+
+        return UpgradeBuyer(buyer=buyer)
 
 
 class Mutation(graphene.ObjectType):

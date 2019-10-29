@@ -42,7 +42,6 @@ class createPayRequest(graphene.Mutation):
         rawtime = datetime.now()
         finishedtime = rawtime.strftime("%Y%m%d%H%M%S")
         rawpass = "{}{}{}".format(keys.business_short_code, keys.passKey, finishedtime)
-        print(rawpass)
         base64Pass = base64.b64encode(rawpass.encode())
         passwd = base64Pass.decode()
         phone = "254" + phone[1:]
