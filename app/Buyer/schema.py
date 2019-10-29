@@ -165,4 +165,4 @@ class UpgradeBuyer(graphene.Mutation):
 class Mutation(graphene.ObjectType):
     create_buyer = CreateBuyer.Field()
     update_buyer = UpdateBuyer.Field()
-    give_buyers_accounts = UpdateBuyerAccounts.Field()
+    upgrade_buyer = UpgradeBuyer.Field()

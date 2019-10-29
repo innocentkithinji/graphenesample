@@ -170,4 +170,5 @@ class UpgradeFarm(graphene.Mutation):
 class Mutation(graphene.ObjectType):
     create_farm = CreateFarm.Field()
     update_farm = UpdateFarm.Field()
-    give_farm_accounts = UpdateFarmAccounts.Field()
+    upgrade_farm = UpgradeFarm.Field()
+

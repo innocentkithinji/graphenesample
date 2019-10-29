@@ -159,3 +159,4 @@ class UpgradeLabourer(graphene.Mutation):
 class Mutation(graphene.ObjectType):
     create_Labourer = createLabourer.Field()
     update_Labourer = UpdateLabourer.Field()
+    upgrade_Labourer = UpgradeLabourer.Field()
