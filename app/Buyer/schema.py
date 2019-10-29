@@ -10,8 +10,8 @@ from Packages.models import BuyerPackage
 from graphene_django import DjangoObjectType
 from requests.auth import HTTPBasicAuth
 
-from app.Mpesa import keys
-from app.Mpesa.models import payRequest
+from Mpesa import keys
+from Mpesa.models import payRequest
 from .models import Buyer
 
 
