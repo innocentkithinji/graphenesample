@@ -1,6 +1,6 @@
 from django.db import models
 
-from Agent.models import Agent;
+from Agent.models import Agent
 
 class Member(models.Model):
     phoneNumber = models.CharField(max_length=20, unique=True)

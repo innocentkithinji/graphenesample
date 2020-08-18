@@ -14,8 +14,9 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = 'media'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
@@ -58,6 +59,7 @@ INSTALLED_APPS = [
     'Mpesa',
     'Prices',
     'BuyerRequests',
+    'LabourApplications',
 ]
 
 GRAPHENE = {
@@ -101,19 +103,95 @@ WSGI_APPLICATION = 'app.wsgi.application'
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#         'NAME': os.path.join(BASE_DIR, 'mydb.sqlite3'),
 #     }
 # }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'OPTIONS': {
-            'read_default_file': '/etc/mysql/my.cnf',
-        },
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'OPTIONS': {
+#             'read_default_file': '/etc/mysql/my.cnf',
+#         },
+#     }
+# }
 
+import pymysql  # noqa: 402
+pymysql.version_info = (1, 4, 6, 'final', 0)  # change mysqlclient version
+pymysql.install_as_MySQLdb()
+
+# [START db_setup]
+if os.getenv('GAE_APPLICATION', None):
+    # Running on production App Engine, so connect to Google Cloud SQL using
+    # the unix socket at /cloudsql/<your-cloudsql-connection string>
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'HOST': '/cloudsql/hayvest-app:europe-west1:hayvest-app',
+            'USER': 'hayvestapp',
+            'PASSWORD': '1EMA&%Gvu!Qk2k^j!cbv',
+            'NAME': 'hayvestdb',
+        }
+    }
+
+    DEFAULT_FILE_STORAGE = 'gcloud.GoogleCloudMediaFileStorage'
+    STATICFILES_STORAGE = 'gcloud.GoogleCloudStaticFileStorage'
+
+    GS_PROJECT_ID = 'hayvest-app'
+    GS_STATIC_BUCKET_NAME = 'hayvest_static_bucket'
+    GS_MEDIA_BUCKET_NAME = 'hayvest_media_bucket'  # same as STATIC BUCKET if using single bucket both for static and media
+
+    DOWN_URL = 'https://storage.googleapis.com/{}/'.format(GS_STATIC_BUCKET_NAME)
+    # STATIC_ROOT = "static/"
+
+    MEDIA_URL = 'https://storage.googleapis.com/{}/'.format(GS_MEDIA_BUCKET_NAME)
+    MEDIA_ROOT = "media/"
+
+    UPLOAD_ROOT = 'media/uploads/'
+
+    DOWNLOAD_ROOT = os.path.join(PROJECT_DIR, "static/media/downloads")
+    DOWNLOAD_URL = DOWN_URL + "media/downloads"
+
+else:
+    # Running locally so connect to either a local MySQL instance or connect to
+    # Cloud SQL via the proxy. To start the proxy via command line:
+    #
+    #     $ cloud_sql_proxy -instances=[INSTANCE_CONNECTION_NAME]=tcp:3306
+    #
+    # See https://cloud.google.com/sql/docs/mysql-connect-proxy
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'HOST': '127.0.0.1',
+            'PORT': '3308',
+            'NAME': 'hayvestdb',
+            'USER': 'hayvestapp',
+            'PASSWORD': '1EMA&%Gvu!Qk2k^j!cbv',
+        }
+    }
+
+    DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
+
+    STATIC_ROOT = 'static/'
+    DOWN_URL = '/static/'
+
+    MEDIA_ROOT = 'media'
+    MEDIA_URL = 'media/'
+
+    UPLOAD_ROOT = 'uploads/'
+
+    DOWNLOAD_URL = DOWN_URL + "media/downloads"
+    DOWNLOAD_ROOT = os.path.join(PROJECT_DIR, "static/media/downloads")
+# [END db_setup]
+
+# Use a in-memory sqlite3 database when testing in CI systems
+if os.getenv('TRAMPOLINE_CI', None):
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3')
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -152,5 +230,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
-PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
-STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
+STATIC_ROOT = 'static'

@@ -4,3 +4,8 @@ Pipfile.lock
 __pycache__
 app/**/migrations/**
 db.sqlite3
+
+env/
+**/env/
+**/**/migrations/
+**/*.pyc

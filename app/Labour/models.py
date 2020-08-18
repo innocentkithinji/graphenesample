@@ -36,11 +36,3 @@ class LaboursRequest(models.Model):
     def __str__(self):
         return str(self.id)
 
-
-class LabourApplication(models.Model):
-    from Labourers.models import Labourer
-
-    LaboursRequest = models.ForeignKey(LaboursRequest, related_name="labourApplication", on_delete=models.CASCADE)
-    Labourer = models.ForeignKey(Labourer, related_name="LabourerApplications", on_delete=models.CASCADE)
-    hired = models.BooleanField(default=False, null=False)
-    responded = models.BooleanField(default=False, null=False)

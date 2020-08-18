@@ -1,0 +1,1 @@
+ $apps = 'Categories','County','Country','Products','Units','Buyer','Farm','Members','Packages','Sales','Tenders','Labour','Wards','Chats','Agent','Labourers','Mpesa','Prices','BuyerRequests','LabourApplications'
